@@ -10,6 +10,6 @@ public abstract class WorldAbstractFactory {
         AbstractEnemy randomEnemy;
         double aleatorio = getRandomDoubleBetweenRange(0, 100);
         
-        return null; //TODO: Implementar patron Template Method
+        return null; //TODO llamar a los create
     }
 }   

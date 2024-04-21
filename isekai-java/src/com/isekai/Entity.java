@@ -5,6 +5,5 @@ public interface Entity {
     public Integer getPower();
     public Integer getLives();
     public AttackType getAttackType();
-    public void setPower(Integer power);
     public void setLives(Integer lives);
-}
+} 

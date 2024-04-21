@@ -21,10 +21,6 @@ public abstract class AbstractEnemy implements Entity{
         this.lives = lives;
     }
 
-    public void setPower(Integer power) {
-        this.power = power;
-    }
-
     public Integer getLives() {
         return this.lives;
     }
