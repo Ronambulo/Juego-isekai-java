@@ -1,7 +1,9 @@
-package com.isekai;
+package com.isekai.Entities;
 
-public class OgreWorld1 extends Ogre{
-    public OgreWorld1() {
+import com.isekai.World;
+
+public class OgreWorld2 extends Ogre{
+    public OgreWorld2() {
         this.power = DEFAULT_POWER * World.LEVEL2.getComplexFactor();
         this.lives = DEFAULT_LIVES * World.LEVEL2.getComplexFactor();
     }

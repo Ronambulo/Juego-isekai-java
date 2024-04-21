@@ -1,5 +1,7 @@
 package com.isekai;
 
+import com.isekai.Entities.*;
+
 public class World2Factory extends WorldAbstractFactory{
         public Slime createSlime(){
             return new SlimeWorld2(); //TODO: Implementar color aleatorio y contexto del Strategy

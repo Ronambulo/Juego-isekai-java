@@ -1,5 +1,7 @@
 package com.isekai;
 
+import com.isekai.Entities.*;
+
 public class World1Factory extends WorldAbstractFactory{
 
     public Slime createSlime(){

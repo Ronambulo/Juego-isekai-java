@@ -1,5 +1,7 @@
 package com.isekai;
 
+import com.isekai.Entities.*;
+
 public class ConsoleTextManager {
 
     private Texto numberToText;

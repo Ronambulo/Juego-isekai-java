@@ -1,12 +1,12 @@
-package com.isekai;
+package com.isekai.Entities;
 
-public abstract class Bee extends AbstractEnemy{
+public abstract class Ogre extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
     protected final Integer DEFAULT_LIVES = 1;
-    public String genre;
+    public String weapon;
 
     public String getGenre() {
-        return this.genre;
+        return this.weapon;
     }
 
     public void turn(){

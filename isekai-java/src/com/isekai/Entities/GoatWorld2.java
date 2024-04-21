@@ -1,7 +1,9 @@
-package com.isekai;
+package com.isekai.Entities;
 
-public class GoatWorld1 extends Goat{
-    public GoatWorld1() {
+import com.isekai.World;
+
+public class GoatWorld2 extends Goat{
+    public GoatWorld2() {
         super();
         this.power = DEFAULT_POWER * World.LEVEL1.getComplexFactor();
         this.lives = DEFAULT_LIVES * World.LEVEL1.getComplexFactor();

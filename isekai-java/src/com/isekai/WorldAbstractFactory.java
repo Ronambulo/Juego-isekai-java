@@ -1,5 +1,7 @@
 package com.isekai;
 
+import com.isekai.Entities.*;
+
 public abstract class WorldAbstractFactory {
 
     public static double getRandomDoubleBetweenRange(double min, double max){

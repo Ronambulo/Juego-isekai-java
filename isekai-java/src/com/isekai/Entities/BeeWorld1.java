@@ -1,7 +1,9 @@
-package com.isekai;
+package com.isekai.Entities;
 
-public class WolfWorld2 extends Wolf{
-    public WolfWorld2() {
+import com.isekai.World;
+
+public class BeeWorld1 extends Bee{
+    public BeeWorld1() {
         super();
         this.power = DEFAULT_POWER * World.LEVEL1.getComplexFactor();
         this.lives = DEFAULT_LIVES * World.LEVEL1.getComplexFactor();

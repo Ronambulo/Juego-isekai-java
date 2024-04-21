@@ -1,12 +1,12 @@
-package com.isekai;
+package com.isekai.Entities;
 
-public abstract class Ogre extends AbstractEnemy{
+public abstract class Wolf extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
     protected final Integer DEFAULT_LIVES = 1;
-    public String weapon;
+    public String alfa;
 
     public String getGenre() {
-        return this.weapon;
+        return this.alfa;
     }
 
     public void turn(){

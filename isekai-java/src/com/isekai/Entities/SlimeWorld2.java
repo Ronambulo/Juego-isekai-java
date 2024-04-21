@@ -1,4 +1,6 @@
-package com.isekai;
+package com.isekai.Entities;
+
+import com.isekai.World;
 
 public class SlimeWorld2 extends Slime{
     public SlimeWorld2() {
