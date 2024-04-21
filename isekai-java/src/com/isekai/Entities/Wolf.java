@@ -5,6 +5,10 @@ public abstract class Wolf extends AbstractEnemy{
     protected final Integer DEFAULT_LIVES = 1;
     public String alfa;
 
+    public Wolf() {
+        this.attackType = AttackType.MELEE;
+    }
+
     public String getGenre() {
         return this.alfa;
     }

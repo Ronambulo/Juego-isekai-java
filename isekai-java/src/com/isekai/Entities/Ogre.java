@@ -5,6 +5,10 @@ public abstract class Ogre extends AbstractEnemy{
     protected final Integer DEFAULT_LIVES = 1;
     public String weapon;
 
+    public Ogre() {
+        this.attackType = AttackType.RANGE;
+    }
+
     public String getGenre() {
         return this.weapon;
     }

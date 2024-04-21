@@ -1,7 +1,5 @@
 package com.isekai.Entities;
 
-import com.isekai.AttackType;
-
 public abstract class AbstractEnemy implements Entity{
     protected Integer power;
     protected Integer lives;

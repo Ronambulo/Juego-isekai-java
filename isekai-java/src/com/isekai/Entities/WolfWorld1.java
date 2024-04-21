@@ -1,7 +1,5 @@
 package com.isekai.Entities;
 
-import com.isekai.World;
-
 public class WolfWorld1 extends Wolf{
     public WolfWorld1() {
         super();

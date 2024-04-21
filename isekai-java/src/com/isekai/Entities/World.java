@@ -1,4 +1,4 @@
-package com.isekai;
+package com.isekai.Entities;
 
 public enum World {
     LEVEL1(1),LEVEL2(2);

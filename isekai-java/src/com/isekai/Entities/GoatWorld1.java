@@ -1,7 +1,5 @@
 package com.isekai.Entities;
 
-import com.isekai.World;
-
 public class GoatWorld1 extends Goat{
     public GoatWorld1() {
         super();

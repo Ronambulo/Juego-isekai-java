@@ -1,7 +1,5 @@
 package com.isekai.Entities;
 
-import com.isekai.World;
-
 public class OgreWorld1 extends Ogre{
     public OgreWorld1() {
         this.power = DEFAULT_POWER * World.LEVEL2.getComplexFactor();

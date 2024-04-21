@@ -1,7 +1,5 @@
 package com.isekai.Entities;
 
-import com.isekai.World;
-
 public class SlimeWorld1 extends Slime{
     public SlimeWorld1() {
         super();

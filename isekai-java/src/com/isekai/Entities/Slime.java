@@ -5,6 +5,10 @@ public abstract class Slime extends AbstractEnemy{
     protected final Integer DEFAULT_LIVES = 1;
     public SlimeColor color;
 
+    public Slime() {
+        this.attackType = AttackType.MELEE;
+    }
+
     public SlimeColor getColor() {
         return color;
     }

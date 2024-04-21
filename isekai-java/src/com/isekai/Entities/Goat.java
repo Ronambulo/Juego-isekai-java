@@ -5,6 +5,10 @@ public abstract class Goat extends AbstractEnemy{
     protected final Integer DEFAULT_LIVES = 1;
     public Boolean scream;
 
+    public Goat() {
+        this.attackType = AttackType.MELEE;
+    }
+
     public Boolean getScream() {
         return this.scream;
     }
