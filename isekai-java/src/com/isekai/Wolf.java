@@ -1,0 +1,15 @@
+package com.isekai;
+
+public abstract class Wolf extends AbstractEnemy{
+    protected final Integer DEFAULT_POWER = 10;
+    protected final Integer DEFAULT_LIVES = 1;
+    public String alfa;
+
+    public String getGenre() {
+        return this.alfa;
+    }
+
+    public void turn(){
+        //TODO
+    }  
+}
