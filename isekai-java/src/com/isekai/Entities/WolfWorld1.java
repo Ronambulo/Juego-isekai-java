@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 public class WolfWorld1 extends Wolf{
     public WolfWorld1() {

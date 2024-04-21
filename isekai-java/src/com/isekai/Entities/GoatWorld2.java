@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 public class GoatWorld2 extends Goat{
     public GoatWorld2() {

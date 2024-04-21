@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 public abstract class AbstractEnemy implements Entity{
     protected Integer power;

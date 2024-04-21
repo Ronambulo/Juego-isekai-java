@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 import com.isekai.*;
 
