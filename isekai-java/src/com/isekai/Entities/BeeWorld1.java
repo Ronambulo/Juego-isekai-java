@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 public class BeeWorld1 extends Bee{
     public BeeWorld1() {

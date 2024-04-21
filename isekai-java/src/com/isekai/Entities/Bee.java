@@ -1,4 +1,4 @@
-package com.isekai.Entities;
+package com.isekai.entities;
 
 public abstract class Bee extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
