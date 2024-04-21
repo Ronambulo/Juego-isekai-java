@@ -1,4 +1,4 @@
-package com.isekai.entities;
+package com.isekai.Entities;
 
 public class OgreWorld1 extends Ogre{
     public OgreWorld1() {

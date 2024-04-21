@@ -1,4 +1,4 @@
-package com.isekai.entities;
+package com.isekai.Entities;
 
 public abstract class Goat extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;

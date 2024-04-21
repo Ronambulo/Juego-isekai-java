@@ -1,6 +1,6 @@
 package com.isekai;
 
-import com.isekai.entities.*;
+import com.isekai.Entities.*;
 
 public class ConsoleTextManager {
 

@@ -1,4 +1,4 @@
-package com.isekai.entities;
+package com.isekai.Entities;
 
 public abstract class Slime extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;

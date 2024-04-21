@@ -1,6 +1,4 @@
-package com.isekai.entities;
-
-import com.isekai.*;
+package com.isekai.Entities;
 
 public interface Entity {
     public String getName();
