@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2024-05-01T10:32:23.407Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="QK_Nwx9dARghxBcCPsom" version="24.2.7" type="device">
+<mxfile host="app.diagrams.net" modified="2024-05-01T14:09:46.100Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="lISbv3JACrmMfNzdnss8" version="24.3.1" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="3217" dy="1287" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="6563" dy="3088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -163,8 +163,8 @@
             <mxPoint x="157" y="1390" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="h7VzVAKM7qoOcqU1yWMS-52" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Player&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- power: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- lives: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- attackType: AttackType&lt;/p&gt;&lt;hr style=&quot;border-style: solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getName(): String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getPower(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getLives(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getAttackType(): AttackType&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="486" y="1365" width="174.5" height="160" as="geometry" />
+        <mxCell id="h7VzVAKM7qoOcqU1yWMS-52" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;Player&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- power: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- lives: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;- attackType: AttackType&lt;br&gt;&lt;/p&gt;&lt;hr style=&quot;border-style: solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getName(): String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getPower(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getLives(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getAttackType(): AttackType&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getDescription(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="341.5" y="1530" width="178.5" height="170" as="geometry" />
         </mxCell>
         <mxCell id="RkuZWBZad0J67WNa_hbr-7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;BeeWorld1&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;- genre: String&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+&amp;nbsp;&lt;b style=&quot;text-align: center;&quot;&gt;BeeWorld1&lt;/b&gt;&lt;b style=&quot;background-color: initial; text-align: center;&quot;&gt;()&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getName(): String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getPower(): Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getLives(): Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ getGenre():String&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ toString(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="-294" y="690" width="160" height="150" as="geometry" />
@@ -385,10 +385,10 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="RkuZWBZad0J67WNa_hbr-46" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="h7VzVAKM7qoOcqU1yWMS-49" target="h7VzVAKM7qoOcqU1yWMS-52" edge="1">
+        <mxCell id="RkuZWBZad0J67WNa_hbr-46" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="h7VzVAKM7qoOcqU1yWMS-49" target="1c-XAH0KAhvuEu2eWebM-0" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">
             <mxPoint x="403" y="1430" as="sourcePoint" />
-            <mxPoint x="456" y="1450" as="targetPoint" />
+            <mxPoint x="480" y="1445" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="qmuJxNCA8qb5GWZH5QQA-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Enum&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;BeeType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;QUEEN (x2 HP)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;DRONE (x1.25 PW)&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;WORKER(NOTHING)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -429,6 +429,129 @@
             <mxPoint x="913.69" y="1130" as="sourcePoint" />
             <mxPoint x="963.69" y="940" as="targetPoint" />
             <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-0" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;i&gt;&amp;lt;&amp;lt;Interface&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b&gt;PlayerComponent&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getName(): String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getPower(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getLives(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getAttackType(): AttackType&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getDescription(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="489" y="1385" width="174" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-1" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PlayerType&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ WIZARD&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ PALADIN&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ BERSERK&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ ARCHER&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ KNIGHT&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="757.69" y="1320" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-2" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="h7VzVAKM7qoOcqU1yWMS-52" target="1c-XAH0KAhvuEu2eWebM-0" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="420" y="1590" as="sourcePoint" />
+            <mxPoint x="580" y="1590" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="1475" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-3" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AbstractPlayerDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# name: String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# power: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# lives: Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# attackType: AttackType&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;# playerComponent: PlayerComponent()&lt;/p&gt;&lt;hr style=&quot;border-style: solid;&quot; size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ AbstractPlayerDecorator(PlayerComponent, Integer, Integer, String)&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ AbstractPlayerDecorator(PlayerComponent, Integer, Integer, AttackType, String)&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getName(): String&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getPower(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getLives(): Integer&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getAttackType(): AttackType&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px;&quot;&gt;+ getDescription(): String&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="600" y="1530" width="470" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-4" value="" style="endArrow=block;dashed=1;endFill=0;endSize=12;html=1;rounded=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-0" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="590" y="1490" as="sourcePoint" />
+            <mxPoint x="750" y="1490" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="835" y="1475" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-5" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;TunicDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Tunic&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 0: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 0: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="376.00000000000006" y="1820" width="323" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-7" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;WandDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Wand&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 0: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 10: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_ATTACK_TYPE =&amp;nbsp; AttackType.RANGE: AttackType&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="986" y="1820" width="364" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-9" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;PaladinArmorDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Paladin Armor&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 15: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 0: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="376" y="1960" width="323" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-10" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;KnightArmorDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Knight Armor&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 10: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 0: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="376.00000000000006" y="2080" width="323" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-11" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;SwordDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Knight Armor&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 0: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 5: Integer&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_ATTACK_TYPE = AttackType.MELEE: AttackType&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="986" y="2000" width="344" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-12" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;LeatherArmorDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;LeatherArmor&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 5: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 0: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="376" y="2300" width="323" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-13" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;BowDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Bow&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 5: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 15: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_ATTACK_TYPE = AttackType.RANGE :AttackType&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="986" y="2190" width="404" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-14" value="&lt;p style=&quot;margin:0px;margin-top:4px;text-align:center;&quot;&gt;&lt;b&gt;AxesDecorator&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_NAME = &quot;Bow&quot;: String&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ DEFAULT_LIVES = 0: Integer&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_POWER = 15: Integer&lt;/span&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;+ DEFAULT_ATTACK_TYPE = AttackType.MELEE :AttackType&lt;/span&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot; style=&quot;border-style:solid;&quot;&gt;&lt;p style=&quot;margin:0px;margin-left:4px;&quot;&gt;+ TunicDecorator(PlayerComponent)&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;html=1;whiteSpace=wrap;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="986" y="2370" width="404" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-15" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" target="1c-XAH0KAhvuEu2eWebM-5" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="730" y="1750" as="sourcePoint" />
+            <mxPoint x="1130" y="1930" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="730" y="1875" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-16" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.34;exitY=0.998;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-9" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="760" y="1770" as="sourcePoint" />
+            <mxPoint x="730" y="1891" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="760" y="2015" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-17" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.403;exitY=1.003;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-10" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="770" y="1760" as="sourcePoint" />
+            <mxPoint x="709" y="2025" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="790" y="2135" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-18" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.469;exitY=1.004;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-12" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="799" y="1761" as="sourcePoint" />
+            <mxPoint x="709" y="2145" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="820" y="2355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-19" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.744;exitY=1.002;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-7" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="921" y="1790" as="sourcePoint" />
+            <mxPoint x="890" y="1915" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="950" y="1880" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-20" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.682;exitY=0.997;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-11" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="888.19" y="1790" as="sourcePoint" />
+            <mxPoint x="827.19" y="2055" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="920" y="2060" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-21" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.616;exitY=0.998;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-13" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="855.69" y="1750" as="sourcePoint" />
+            <mxPoint x="917.69" y="2070" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="890" y="2250" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="1c-XAH0KAhvuEu2eWebM-23" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.553;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="1c-XAH0KAhvuEu2eWebM-3" target="1c-XAH0KAhvuEu2eWebM-14" edge="1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="860" y="1751" as="sourcePoint" />
+            <mxPoint x="963.69" y="2258" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="860" y="2430" />
+            </Array>
           </mxGeometry>
         </mxCell>
       </root>
