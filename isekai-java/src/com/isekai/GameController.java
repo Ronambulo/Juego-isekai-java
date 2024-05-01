@@ -5,8 +5,10 @@ import com.isekai.entities.*;
 public class GameController {
     private static GameController instance;
 
-    private World1Factory world1Factory = new World1Factory(); //! error con WorldAbstractFactory
-    private World2Factory world2Factory = new World2Factory(); //! error con WorldAbstractFactory
+    private WorldAbstractFactory world1Factory = new World1Factory();
+    private WorldAbstractFactory world2Factory = new World2Factory();
+    private PlayerFactory playerFactory = new PlayerFactory();
+
 
     private GameController() {
         super();
@@ -24,10 +26,14 @@ public class GameController {
 
         consoleTextManager.writeText(Texto.INTRODUCTION);
          
-        AbstractEnemy slime1 = world1Factory.createSlime();
+        Entity slime1 = world1Factory.createSlime();
         System.out.println(slime1.toString());
-        AbstractEnemy slime2 = world2Factory.createSlime();
+        Entity slime2 = world2Factory.createSlime();
         System.out.println(slime2.toString());
+
+        Entity player = playerFactory.createPlayer(PlayerType.BERSERK);
+        System.out.println(player.toString());
+        System.out.println("Power: " + player.getPower() + " Lives: " + player.getLives());
 
         consoleTextManager.writeText(slime1, slime2, Texto.ATTACK);
         consoleTextManager.writeText(slime2, Texto.KILL);

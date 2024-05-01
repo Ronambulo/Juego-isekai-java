@@ -8,6 +8,9 @@ public abstract class WorldAbstractFactory {
         return (Math.random()*(max-min))+min;
     }
 
+    public abstract Slime createSlime();
+    
+
     public AbstractEnemy createRandomEnemy(){
         AbstractEnemy randomEnemy;
         double aleatorio = getRandomDoubleBetweenRange(0, 100);
