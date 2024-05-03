@@ -33,7 +33,7 @@ public class GameController {
 
         Entity player = playerFactory.createPlayer(PlayerType.BERSERK);
         System.out.println(player.toString());
-        System.out.println("Power: " + player.getPower() + " Lives: " + player.getLives());
+        System.out.println("Power: " + player.getPower() + " wLives: " + player.getLives());
 
         consoleTextManager.writeText(slime1, slime2, Texto.ATTACK);
         consoleTextManager.writeText(slime2, Texto.KILL);
