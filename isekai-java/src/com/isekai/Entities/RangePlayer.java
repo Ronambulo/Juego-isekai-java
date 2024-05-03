@@ -1,6 +1,6 @@
 package com.isekai.entities;
 
-public class RangePlayer implements PlayerComponent{
+public class RangePlayer extends PlayerComponent{
     protected Integer power;
     protected Integer lives;
     protected AttackType attackType;

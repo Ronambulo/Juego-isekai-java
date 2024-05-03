@@ -1,6 +1,6 @@
 package com.isekai.entities;
 
-public abstract class AbstractEnemy implements Entity{
+public abstract class AbstractEnemy extends Entity{
     protected Integer power;
     protected Integer lives;
     protected AttackType attackType;

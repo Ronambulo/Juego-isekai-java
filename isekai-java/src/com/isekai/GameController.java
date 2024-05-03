@@ -1,6 +1,8 @@
 package com.isekai;
 
 import com.isekai.entities.*;
+import com.isekai.entities.decorator.AxesDecorator;
+import com.isekai.entities.decorator.WandDecorator;
 
 public class GameController {
     private static GameController instance;
@@ -33,9 +35,13 @@ public class GameController {
 
         Entity player = playerFactory.createPlayer(PlayerType.BERSERK);
         System.out.println(player.toString());
-        System.out.println("Power: " + player.getPower() + " wLives: " + player.getLives());
+        System.out.println("Power: " + player.getPower() + " Lives: " + player.getLives());
 
         consoleTextManager.writeText(slime1, slime2, Texto.ATTACK);
         consoleTextManager.writeText(slime2, Texto.KILL);
+
+        player.getCurrentState().attack(slime1, player);
+        player.setLives(-100);
+        player.getCurrentState().attack(slime1, player);
     }
 }

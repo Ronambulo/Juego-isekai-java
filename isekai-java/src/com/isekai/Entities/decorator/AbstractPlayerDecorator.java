@@ -2,7 +2,7 @@ package com.isekai.entities.decorator;
 
 import com.isekai.entities.*;
 
-public abstract class AbstractPlayerDecorator implements PlayerComponent{
+public abstract class AbstractPlayerDecorator extends PlayerComponent{
 
     protected PlayerComponent playerComponent;
 

@@ -1,6 +1,6 @@
 package com.isekai.entities;
 
-public class MeleePlayer implements PlayerComponent{
+public class MeleePlayer extends PlayerComponent{
     protected Integer power;
     protected Integer lives;
     protected AttackType attackType;
