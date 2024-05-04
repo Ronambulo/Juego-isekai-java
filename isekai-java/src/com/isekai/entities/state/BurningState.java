@@ -4,6 +4,7 @@ import com.isekai.entities.*;
 
 public class BurningState implements EntityState{
     public Entity entity;
+    private Calculator calculator = Calculator.getInstance();
 
     public BurningState(Entity entity){
         this.entity = entity;
@@ -13,7 +14,7 @@ public class BurningState implements EntityState{
     public void show(Entity entityContext) {
         if(entityContext.getLives() > 0){
             System.out.println("Burning State");
-            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 20){
+            if(calculator.getRandomDoubleBetweenRange(0, 100) < 20){
                 entityContext.setCurrentState(new NormalState(entityContext));
             }
         }

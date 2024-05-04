@@ -2,6 +2,8 @@ package com.isekai.entities;
 import com.isekai.entities.state.*;
 
 public abstract class Entity {
+    protected Integer power;
+    protected Integer lives = 0;
     private EntityState currentState;
     
     public Entity() {
@@ -22,4 +24,7 @@ public abstract class Entity {
         this.currentState = currentState;
     }
 
+    public void heal(Integer lives) {
+        this.lives += lives;
+    }
 } 

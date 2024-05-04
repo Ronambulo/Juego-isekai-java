@@ -5,6 +5,7 @@ import com.isekai.entities.decorator.*;
 
 public class NormalState implements EntityState{
     private Entity entity;
+    private Calculator calculator = Calculator.getInstance();
 
     public NormalState(Entity entity){
         this.entity = entity;
@@ -23,23 +24,23 @@ public class NormalState implements EntityState{
     public void attack(Entity attacker, Entity attacked){
         if(attacker instanceof PlayerComponent){
             if(attacker instanceof WandDecorator){
-                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+                if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                     attacked.setCurrentState(new BurningState(attacked));
                 }
             }
             if(attacker instanceof BowDecorator){
-                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 5){
+                if(calculator.getRandomDoubleBetweenRange(0, 100) < 5){
                     attacked.setCurrentState(new PoissonedState(attacked));
                 }
             }
         }
         if(attacker instanceof Bee){
-            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+            if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                 attacked.setCurrentState(new PoissonedState(attacked));
             }
         }
         if(attacker instanceof Slime){
-            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+            if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                 attacked.setCurrentState(new BurningState(attacked));
             }
         }

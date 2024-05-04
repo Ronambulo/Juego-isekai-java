@@ -1,12 +1,10 @@
 package com.isekai.entities;
 
 public abstract class AbstractEnemy extends Entity{
-    protected Integer power;
-    protected Integer lives;
     protected AttackType attackType;
 
     public String getName() {
-        return this.getClass().getSimpleName();
+        return super.getClass().getSimpleName();
     }
 
     public Integer getPower() {

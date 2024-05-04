@@ -1,8 +1,8 @@
 package com.isekai.entities;
 
 public abstract class Wolf extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 10;
-    protected final Integer DEFAULT_LIVES = 1;
+    protected final Integer DEFAULT_POWER = 4;
+    protected final Integer DEFAULT_LIVES = 10;
     public String alfa;
 
     public Wolf() {

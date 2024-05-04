@@ -2,19 +2,14 @@ package com.isekai;
 
 import com.isekai.entities.*;
 
-public abstract class WorldAbstractFactory {
+public interface WorldAbstractFactory {
+    Calculator calculator = Calculator.getInstance();
 
-    public static double getRandomDoubleBetweenRange(double min, double max){
-        return (Math.random()*(max-min))+min;
-    }
+    public Slime createSlime();
+    public Bee createBee();        
+    public Ogre createOgre();
+    public Goat createGoat();
+    public Wolf createWolf();
 
-    public abstract Slime createSlime();
-    
-
-    public AbstractEnemy createRandomEnemy(){
-        AbstractEnemy randomEnemy;
-        double aleatorio = getRandomDoubleBetweenRange(0, 100);
-        
-        return null; //TODO llamar a los create
-    }
-}   
+    public Entity createRandomEnemy();
+}

@@ -30,7 +30,7 @@ public abstract class AbstractPlayerDecorator extends PlayerComponent{
     }
 
     public void setLives(Integer lives) {
-        this.lives = lives;
+        this.playerComponent.setLives(lives);
     }
 
     public Integer getLives() {

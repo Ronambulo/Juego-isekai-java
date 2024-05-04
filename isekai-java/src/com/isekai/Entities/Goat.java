@@ -1,8 +1,8 @@
 package com.isekai.entities;
 
 public abstract class Goat extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 10;
-    protected final Integer DEFAULT_LIVES = 1;
+    protected final Integer DEFAULT_POWER = 3;
+    protected final Integer DEFAULT_LIVES = 10;
     public Boolean scream;
 
     public Goat() {
