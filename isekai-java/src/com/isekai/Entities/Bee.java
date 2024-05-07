@@ -1,19 +1,28 @@
 package com.isekai.entities;
 
+import com.isekai.Calculator;
+
 public abstract class Bee extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 2;
     protected final Integer DEFAULT_LIVES = 10;
-    public String genre;
+    public BeeType genre;
 
     public Bee() {
         this.attackType = AttackType.RANGE;
+        if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1){
+            this.genre = BeeType.QUEEN;
+        }
+        else{
+            this.genre = BeeType.DRONE;
+        }
     }
 
-    public String getGenre() {
+    public BeeType getGenre() {
         return this.genre;
     }
 
-    public void turn(){
-        //TODO
-    }  
+    public String getModification() {
+        return this.genre.getGenre();
+    }
+
 }

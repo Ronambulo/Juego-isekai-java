@@ -18,7 +18,11 @@ public abstract class AbstractPlayerDecorator extends PlayerComponent{
     }
 
     public String getName() {
-        return this.name;
+        return this.playerComponent.getName();
+    }
+
+    public void setName(String name){
+        this.playerComponent.setName(name);
     }
 
     public Integer getPower() {
@@ -39,6 +43,10 @@ public abstract class AbstractPlayerDecorator extends PlayerComponent{
 
     public String getDescription(){
         return this.playerComponent.getDescription() + " + " + this.getName();
+    }
+
+    public void modifyHealth(Integer lives) {
+        this.lives += lives;
     }
 
     @Override

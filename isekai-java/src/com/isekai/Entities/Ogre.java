@@ -13,7 +13,9 @@ public abstract class Ogre extends AbstractEnemy{
         return this.weapon;
     }
 
-    public void turn(){
-        //TODO
-    }  
+    //TODO
+    
+    public String getModification() {
+        return this.weapon;
+    }
 }

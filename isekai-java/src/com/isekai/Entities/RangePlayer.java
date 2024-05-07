@@ -12,7 +12,7 @@ public class RangePlayer extends PlayerComponent{
     }
 
     public String getName() {
-        return this.getClass().getSimpleName();
+        return this.name;
     }
 
     public Integer getPower() {
@@ -38,5 +38,10 @@ public class RangePlayer extends PlayerComponent{
     @Override
     public String toString() {
         return getDescription();
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 }

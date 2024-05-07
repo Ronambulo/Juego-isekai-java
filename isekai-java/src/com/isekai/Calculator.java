@@ -14,7 +14,7 @@ public class Calculator {
         return instance;
     }
 
-    public double getRandomDoubleBetweenRange(double min, double max){
+    public static double getRandomDoubleBetweenRange(double min, double max){
         return(Math.random()* (max-min))+min;
     }
 
@@ -22,7 +22,7 @@ public class Calculator {
         return (attacked.getLives() - attacker.getPower());
     }
 
-    public void calculateHeal(Entity entity, Integer healValue){
-        entity.heal(healValue);
+    public void calculateHealh(Entity entity, Integer healValue){
+        entity.modifyHealth(healValue);
     }
 }

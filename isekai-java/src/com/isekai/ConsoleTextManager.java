@@ -51,11 +51,11 @@ public class ConsoleTextManager {
                 waitSeconds(2);
                 break;
             case 2: //Ataque
-                System.out.println(this.entityAttack.getName() + " ataca a " + this.entityDefend.getName() + " con " + this.entityAttack.getPower() + " de daño");
+                System.out.println(this.entityAttack.getName() + " ataca a " + this.entityDefend.getName() + " con " + this.entityAttack.getPower() + " de daño\n");
                 break;
 
             case 3: //Curacion
-                System.out.println(this.entityAttack.getName() + " se cura");
+                System.out.println(this.entityAttack.getName() + " se ha curado y ahora tiene " + this.entityAttack.getLives() + " de vida");
                 break;
 
             case 4: //Defensa
@@ -83,9 +83,7 @@ public class ConsoleTextManager {
         } 
     }
 
-    public void playerInfo(Entity player){
-        System.out.println();
-        System.out.println(player.toString() + "Power: " + player.getPower() + " Lives: " + player.getLives());
-        System.out.println();
+    public void playerInfo(Entity player, String playerName){
+        System.out.println("| " + playerName + "\t\tPoder: " + player.getPower() + " Vida: " + player.getLives() + " \t|");
     }
 }

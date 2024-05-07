@@ -12,7 +12,11 @@ public class MeleePlayer extends PlayerComponent{
     }
 
     public String getName() {
-        return this.getClass().getSimpleName();
+        return this.name;
+    }
+
+    public void setName(String name){
+        this.name = name;
     }
 
     public Integer getPower() {

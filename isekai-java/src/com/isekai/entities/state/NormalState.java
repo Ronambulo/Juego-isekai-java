@@ -5,7 +5,6 @@ import com.isekai.entities.decorator.*;
 
 public class NormalState implements EntityState{
     private Entity entity;
-    private Calculator calculator = Calculator.getInstance();
 
     public NormalState(Entity entity){
         this.entity = entity;
@@ -14,7 +13,7 @@ public class NormalState implements EntityState{
     @Override
     public void show(Entity entityContext) {
         if(entityContext.getLives() > 0){
-            System.out.println("Normal State");
+            System.out.println("Normal\n");
         }
         else{
             this.entity.setCurrentState(new DeadState(entityContext));
@@ -24,23 +23,24 @@ public class NormalState implements EntityState{
     public void attack(Entity attacker, Entity attacked){
         if(attacker instanceof PlayerComponent){
             if(attacker instanceof WandDecorator){
-                if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                     attacked.setCurrentState(new BurningState(attacked));
                 }
             }
             if(attacker instanceof BowDecorator){
-                if(calculator.getRandomDoubleBetweenRange(0, 100) < 5){
+                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 5){
                     attacked.setCurrentState(new PoissonedState(attacked));
                 }
             }
         }
-        if(attacker instanceof Bee){
-            if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+        //envenenará sólo si es una abeja reina
+        if(attacker instanceof Bee && ((Bee)attacker).getGenre() == BeeType.QUEEN){
+            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 20){
                 attacked.setCurrentState(new PoissonedState(attacked));
             }
         }
         if(attacker instanceof Slime){
-            if(calculator.getRandomDoubleBetweenRange(0, 100) < 10){
+            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                 attacked.setCurrentState(new BurningState(attacked));
             }
         }

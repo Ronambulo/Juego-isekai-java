@@ -3,6 +3,7 @@ import com.isekai.entities.state.*;
 
 public abstract class Entity {
     protected Integer power;
+    protected String name;
     protected Integer lives = 0;
     private EntityState currentState;
     
@@ -11,7 +12,10 @@ public abstract class Entity {
         currentState = new NormalState(this);
     }
 
-    public abstract String getName();
+    public String getName(){
+        return this.getClass().getSimpleName();
+    };
+    
     public abstract Integer getPower();
     public abstract Integer getLives();
     public abstract AttackType getAttackType();
@@ -24,7 +28,8 @@ public abstract class Entity {
         this.currentState = currentState;
     }
 
-    public void heal(Integer lives) {
+    public void modifyHealth(Integer lives) {
         this.lives += lives;
     }
+
 } 

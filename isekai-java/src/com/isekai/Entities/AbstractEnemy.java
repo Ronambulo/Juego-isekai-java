@@ -23,9 +23,11 @@ public abstract class AbstractEnemy extends Entity{
         return this.lives;
     }
 
+    public abstract String getModification();
+
     @Override
     public String toString() {
-        return getName() + " [attackType=" + getAttackType() + ", lives=" + getLives() + ", power=" + getPower() + "]";
+        return super.getClass().getSuperclass().getSimpleName() + " " + getModification() + "\tPoder: " + getPower() + " Vida: " + getLives();
     }
 
 }

@@ -4,7 +4,6 @@ import com.isekai.entities.*;
 
 public class BurningState implements EntityState{
     public Entity entity;
-    private Calculator calculator = Calculator.getInstance();
 
     public BurningState(Entity entity){
         this.entity = entity;
@@ -13,8 +12,11 @@ public class BurningState implements EntityState{
     @Override
     public void show(Entity entityContext) {
         if(entityContext.getLives() > 0){
-            System.out.println("Burning State");
-            if(calculator.getRandomDoubleBetweenRange(0, 100) < 20){
+            System.out.println("El quemado ha hecho 1 de daño\n");
+            //al estar quemado perderá 1 de vida en cada turno
+            entityContext.modifyHealth(-1);
+            
+            if(Calculator.getRandomDoubleBetweenRange(0, 100) < 20){
                 entityContext.setCurrentState(new NormalState(entityContext));
             }
         }

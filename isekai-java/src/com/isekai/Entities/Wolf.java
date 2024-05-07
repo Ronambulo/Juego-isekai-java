@@ -13,7 +13,10 @@ public abstract class Wolf extends AbstractEnemy{
         return this.alfa;
     }
 
-    public void turn(){
-        //TODO
-    }  
+    //TODO
+    @Override
+    public String getModification() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getModification'");
+    }
 }

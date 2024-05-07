@@ -13,7 +13,10 @@ public abstract class Slime extends AbstractEnemy{
         return color;
     }
 
-    public void turn(){
-        //TODO
+    //TODO
+    @Override
+    public String getModification() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getModification'");
     }
 }
