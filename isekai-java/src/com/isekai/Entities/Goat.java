@@ -3,8 +3,8 @@ package com.isekai.entities;
 import com.isekai.Calculator;
 
 public abstract class Goat extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 3;
-    protected final Integer DEFAULT_LIVES = 10;
+    protected final Integer DEFAULT_POWER = 10;
+    protected final Integer DEFAULT_LIVES = 15;
     public Boolean scream;
 
     public Goat() {
@@ -25,9 +25,9 @@ public abstract class Goat extends AbstractEnemy{
     public String getModification(){
         if(this.scream){
                 return "Chillona";
-            }
-            else{
-                return "Normal";
-            }
+        }
+        else{
+            return "Normal";
         }
     }
+}

@@ -4,7 +4,7 @@ import com.isekai.entities.*;
 
 public class LeatherArmorDecorator extends AbstractPlayerDecorator{
     public static final String DEFAULT_NAME = "Leather Armor";
-    public static final Integer DEFAULT_LIVES = 5;
+    public static final Integer DEFAULT_LIVES = 20;
     public static final Integer DEFAULT_POWER = 0;
 
     public LeatherArmorDecorator(PlayerComponent playerComponent){

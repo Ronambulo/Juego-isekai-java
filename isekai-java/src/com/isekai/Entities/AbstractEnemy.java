@@ -4,7 +4,7 @@ public abstract class AbstractEnemy extends Entity{
     protected AttackType attackType;
 
     public String getName() {
-        return super.getClass().getSimpleName();
+        return super.getClass().getSuperclass().getSimpleName();
     }
 
     public Integer getPower() {

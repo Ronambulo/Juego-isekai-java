@@ -1,23 +1,23 @@
 package com.isekai.entities;
 
 public abstract class Ogre extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 5;
-    protected final Integer DEFAULT_LIVES = 14;
+    protected final Integer DEFAULT_POWER = 10;
+    protected final Integer DEFAULT_LIVES = 40;
     public String weapon;
 
     public Ogre() {
         //TODO por ahora
         this.weapon = "Mazo";
-        this.attackType = AttackType.RANGE;
+        this.attackType = AttackType.MELEE;
     }
 
-    public String getGenre() {
+    public String getWeapon() {
         return this.weapon;
     }
 
     //TODO
     
     public String getModification() {
-        return this.weapon;
+        return getWeapon();
     }
 }

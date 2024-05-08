@@ -22,6 +22,8 @@ public class GameController {
 
     private Scanner scanner = new Scanner(System.in);
     private Boolean gameOver = false;
+    private Integer currentWorld = 1;
+    private Integer numberOfCures = 3;
 
     private GameController() {
         super();
@@ -54,6 +56,7 @@ public class GameController {
 
         //Lógica del juego
         gameLogic(world1Enemies);
+        currentWorld = 2;
         gameLogic(world2Enemies);
  
 
@@ -73,13 +76,18 @@ public class GameController {
     private PlayerComponent SelectPlayer(){
         PlayerType playerType;
         System.out.println("Elije tu clase: ");
-        System.out.println("+-------------------------------------------------+");
-        System.out.println("| 1. Paladin     - MELEE    Vida: 25    Daño: 8   |");
-        System.out.println("| 2. Mago        - RANGO    Vida: 8     Daño: 15  |");
-        System.out.println("| 3. Berserk     - MELEE    Vida: 8     Daño: 20  |");
-        System.out.println("| 4. Caballero   - MELEE    Vida: 10    Daño: 10  |");
-        System.out.println("| 5. Arquero     - RANGO    Vida: 8     Daño: 12  |");
-        System.out.println("+-------------------------------------------------+\n");
+        System.out.println("+----------------------------------------------------+");
+        player = playerFactory.createPlayer(PlayerType.PALADIN);
+        System.out.println("| 1. Paladin     - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
+        player = playerFactory.createPlayer(PlayerType.WIZARD);
+        System.out.println("| 2. Mago        - RANGO    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
+        player = playerFactory.createPlayer(PlayerType.BERSERK);
+        System.out.println("| 3. Berserk     - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
+        player = playerFactory.createPlayer(PlayerType.KNIGHT);
+        System.out.println("| 4. Caballero   - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
+        player = playerFactory.createPlayer(PlayerType.ARCHER);
+        System.out.println("| 5. Arquero     - RANGO    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
+        System.out.println("+----------------------------------------------------+\n");
 
         switch (scanner.nextInt()) {
             case 1:
@@ -102,7 +110,6 @@ public class GameController {
                 break;
         }
         
-
         return playerFactory.createPlayer(playerType);
     }
 
@@ -123,31 +130,42 @@ public class GameController {
     //función para generar la lógica del juego
     public void gameLogic(ArrayList<Entity> listEnemies){
        //Mientras el jugador no esté muerto y el juego no haya terminado
-       while(!(player.getCurrentState() instanceof DeadState) && !gameOver) {
-        //inicializo los enemigos  a 0
-        Integer enemiesAlive = 0;
+       while(playerIsAlive() && !gameOver) {
+            //inicializo los enemigos  a 0
+            Integer enemiesAlive = 0;
+            Integer turns = 0;
 
-       //!Estabamos haciendo un foreach, entonces no te deja salir del bucle hasta que vayas por todos los enemigos
-        for(Entity enemy: listEnemies){
-            //compruebo si está vivo el enemigo
-            if(enemy.getLives() > 0) enemiesAlive++;
+            for(Entity enemy: listEnemies){
+                if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
 
-            while(enemy.getLives() > 0 && player.getLives() > 0){
-                //si el jugador muere, se sale del bucle
-                if(player.getLives() <= 0) {
-                    gameOver = true;
-                    //que se salga directamente, porque sino sigue haciéndolo hasta que recorre todo el array 
-                    //!sigue recorriendose todo el array, porque cuando sale de este bucle while sigue recorriendo el for
-                    break;
-                }  
-                turn(player, enemy);
-            }
-            //System.out.println("¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!");
-        }           
-       
-        //si al terminar el bucle, no hay enemigos vivos, se sale del bucle
-        if(enemiesAlive == 0) break;
-    }
+                System.out.println("¡¡¡¡" + enemy.toString() + " HA APARECIDO!!!!");
+
+                //compruebo si está vivo el enemigo
+                if(enemy.getLives() > 0) enemiesAlive++;
+
+                while(enemy.getLives() > 0 && player.getLives() > 0){                
+                    //si el jugador muere, se sale del bucle
+                    if(!playerIsAlive()) {
+                        gameOver = true;
+                        //que se salga directamente, porque sino sigue haciéndolo hasta que recorre todo el array 
+                    } else{
+                        turn(player, enemy);
+
+                        //PARA LAS CURAS
+                        turns++;
+                        if(turns==3){
+                            numberOfCures +=1;
+                            // reseteamos el contador de turnos
+                            turns = 0;
+                        }
+                    }
+                }
+                System.out.println("¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!\n");
+            }           
+        
+            //si al terminar el bucle, no hay enemigos vivos, se sale del bucle
+            if(enemiesAlive == 0) break;
+        }
     }
 
     private void turn(Entity player, Entity enemy) {
@@ -170,7 +188,7 @@ public class GameController {
         if(attacker instanceof AbstractPlayerDecorator) {
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1. Atacar");
-            System.out.println("2. Curarte");
+            System.out.println("2. Curarte (" + numberOfCures + ")");
             switch(scanner.nextInt()) {
                 case 1:
                     clearScreen(40);
@@ -179,8 +197,19 @@ public class GameController {
                     break;
                 case 2:
                     clearScreen(40);
-                    attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10));
-                    consoleTextManager.writeText(attacker, Texto.HEAL);
+                    if(numberOfCures > 0){
+                        if(currentWorld == 1)
+                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10));
+                        else
+                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10) * World.LEVEL2.getComplexFactor());
+                        
+                        consoleTextManager.writeText(attacker, Texto.HEAL);
+                        numberOfCures -= 1;
+                    }
+                    else{
+                        System.out.println("No tienes pociones de curación");
+                    }
+                    
                     // Aquí va el código para curar al jugador
                     break;
                 default:
@@ -230,9 +259,9 @@ public class GameController {
 
         while(enemy.getLives() > 0 && enemy.getLives() > 0){
             attack(player, enemy);
-            if(!playerIsAlive()) break; 
+            if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
             attack(player, enemy);
-            if(!playerIsAlive()) break; 
+            if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
             attack(enemy, player);
         }
     }
@@ -253,12 +282,12 @@ public class GameController {
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
             // System.out.println("¡Atacas primero!");
             attack(player, enemy);
-            attack(enemy, player);
+            if(enemyIsAlive(enemy)) attack(enemy, player);
         }
         else{
             // System.out.println("TURNO: \n ");
             attack(enemy, player);
-            attack(player, enemy);
+            if(playerIsAlive()) attack(player, enemy);
         }
     }
     
@@ -268,5 +297,4 @@ public class GameController {
     private Boolean enemyIsAlive(Entity enemy){
         return enemy.getLives() > 0;
     }
-
 }

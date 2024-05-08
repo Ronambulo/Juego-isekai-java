@@ -1,7 +1,7 @@
 package com.isekai.entities;
 
 public enum SlimeColor {
-    RED("Rojo"),GREEN("Verde"),BLUE("Azul"),RAINBOW("Multicolor");
+    RED("Rojo") ,BLUE("Azul"),RAINBOW("Multicolor");
 
     private String color;
 
