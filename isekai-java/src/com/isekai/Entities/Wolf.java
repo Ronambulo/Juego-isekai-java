@@ -6,6 +6,8 @@ public abstract class Wolf extends AbstractEnemy{
     public String alfa;
 
     public Wolf() {
+        //TODO por ahora
+        this.alfa = "ALFA";
         this.attackType = AttackType.MELEE;
     }
 
@@ -16,7 +18,6 @@ public abstract class Wolf extends AbstractEnemy{
     //TODO
     @Override
     public String getModification() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getModification'");
+        return this.alfa;
     }
 }

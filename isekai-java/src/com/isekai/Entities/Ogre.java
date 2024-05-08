@@ -6,6 +6,8 @@ public abstract class Ogre extends AbstractEnemy{
     public String weapon;
 
     public Ogre() {
+        //TODO por ahora
+        this.weapon = "Mazo";
         this.attackType = AttackType.RANGE;
     }
 

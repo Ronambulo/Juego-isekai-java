@@ -4,8 +4,12 @@ public abstract class Slime extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 1;
     protected final Integer DEFAULT_LIVES = 8;
     public SlimeColor color;
+    public String colorString;
 
     public Slime() {
+        //TODO por ahora verde
+        this.color = SlimeColor.GREEN;
+
         this.attackType = AttackType.MELEE;
     }
 
@@ -16,7 +20,6 @@ public abstract class Slime extends AbstractEnemy{
     //TODO
     @Override
     public String getModification() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getModification'");
+        return this.color.getColor();
     }
 }

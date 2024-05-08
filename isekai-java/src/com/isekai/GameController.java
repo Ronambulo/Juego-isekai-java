@@ -48,33 +48,14 @@ public class GameController {
         //Una vez seleccionado, podremos modificar el nombre
         player.setName(playerName);
 
-        //
+        //crear los arrays de los enemigos de cada mundo
         spawnEnemies();
         System.out.println();
 
-        //Mientras el jugador no esté muerto y el juego no haya terminado
-        while(!(player.getCurrentState() instanceof DeadState) && !gameOver) {
-            world1Enemies.forEach(enemy -> {
-                while(enemy.getLives() > 0 && player.getLives() > 0){  
-                    if(player.getLives() <= 0) {
-                        gameOver = true;
-                    }  
-                    turn(player, enemy);
-                }
-     
-            });
-        }
-        while(!(player.getCurrentState() instanceof DeadState) && !gameOver) {
-            world2Enemies.forEach(enemy -> {
-                while(enemy.getLives() > 0 && player.getLives() > 0){  
-                    if(player.getLives() <= 0) {
-                        gameOver = true;
-                    }  
-                    turn(player, enemy);
-                }
-     
-            });
-        }
+        //Lógica del juego
+        gameLogic(world1Enemies);
+        gameLogic(world2Enemies);
+ 
 
         if(player.getLives() <= 0) {
             System.out.println("Estado del jugador: ");
@@ -126,7 +107,7 @@ public class GameController {
     }
 
     private Entity spawnRandomEnemy(WorldAbstractFactory factory) {
-        return factory.createBee();
+        return factory.createRandomEnemy();
     }
 
     private void spawnEnemies() {
@@ -139,41 +120,71 @@ public class GameController {
         }
     }
 
+    //función para generar la lógica del juego
+    public void gameLogic(ArrayList<Entity> listEnemies){
+       //Mientras el jugador no esté muerto y el juego no haya terminado
+       while(!(player.getCurrentState() instanceof DeadState) && !gameOver) {
+        //inicializo los enemigos  a 0
+        Integer enemiesAlive = 0;
+
+       //!Estabamos haciendo un foreach, entonces no te deja salir del bucle hasta que vayas por todos los enemigos
+        for(Entity enemy: listEnemies){
+            //compruebo si está vivo el enemigo
+            if(enemy.getLives() > 0) enemiesAlive++;
+
+            while(enemy.getLives() > 0 && player.getLives() > 0){
+                //si el jugador muere, se sale del bucle
+                if(player.getLives() <= 0) {
+                    gameOver = true;
+                    //que se salga directamente, porque sino sigue haciéndolo hasta que recorre todo el array 
+                    //!sigue recorriendose todo el array, porque cuando sale de este bucle while sigue recorriendo el for
+                    break;
+                }  
+                turn(player, enemy);
+            }
+            //System.out.println("¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!");
+        }           
+       
+        //si al terminar el bucle, no hay enemigos vivos, se sale del bucle
+        if(enemiesAlive == 0) break;
+    }
+    }
+
     private void turn(Entity player, Entity enemy) {
         // Llamar a los estados y al toString de ambos para tipico nombre, vida, etc de pokemon
-        //clearScreen(50);
-        System.out.println("-------------x-------------");
 
-        // Mostramos el estado del jugador y del enemigo
-        displayState(player, enemy);
 
-        // Si el player es rango y el enemy es cuerpo a cuerpo, el player empieza con turn()
-        if(player.getAttackType() == AttackType.RANGE && enemy.getAttackType() == AttackType.MELEE) {
-            rangeAttackFirst(player, enemy);
-        } else if(player.getAttackType() == AttackType.MELEE && enemy.getAttackType() == AttackType.RANGE) {
-            meleeAttackFirst(player, enemy);
-        } else {
-            randomAttacks(player, enemy);
+        if(playerIsAlive() && enemyIsAlive(enemy)){
+            // Si el player es rango y el enemy es cuerpo a cuerpo, el player empieza con turn()
+            if(player.getAttackType() == AttackType.RANGE && enemy.getAttackType() == AttackType.MELEE) {
+                rangeAttackFirst(player, enemy);
+            } else if(player.getAttackType() == AttackType.MELEE && enemy.getAttackType() == AttackType.RANGE) {
+                meleeAttackFirst(player, enemy);
+            } else {
+                randomAttacks(player, enemy);
+            }
         }
     }
 
     private void attack(Entity attacker, Entity attaked) {   
-
         if(attacker instanceof AbstractPlayerDecorator) {
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1. Atacar");
             System.out.println("2. Curarte");
             switch(scanner.nextInt()) {
                 case 1:
+                    clearScreen(40);
                     attaked.setLives(calculator.calculateLives(attacker, attaked));
                     consoleTextManager.writeText(attacker, attaked, Texto.ATTACK);
                     break;
                 case 2:
+                    clearScreen(40);
                     attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10));
                     consoleTextManager.writeText(attacker, Texto.HEAL);
                     // Aquí va el código para curar al jugador
                     break;
                 default:
+                    clearScreen(40);
                     attaked.setLives(calculator.calculateLives(attacker, attaked));
                     consoleTextManager.writeText(attacker, attaked, Texto.ATTACK);
                     break;
@@ -183,7 +194,7 @@ public class GameController {
                 attaked.getCurrentState().attack(attacker, attaked); 
             } 
 
-        }else if(attacker instanceof AbstractEnemy) {  
+        }else if(attacker instanceof AbstractEnemy) {              
             if(player.getLives() > 0) {
                 attaked.modifyHealth(-attacker.getPower());
                 System.out.println("Estado del jugador:");
@@ -193,6 +204,12 @@ public class GameController {
         }
         //al Text manager para mostrar el ataque
         // al show para los estados
+
+        if(attacker instanceof AbstractPlayerDecorator) {
+            displayState(attacker, attaked);
+        } else {
+            displayState(attaked, attacker);
+        }
     }
 
     public void clearScreen(Integer n){
@@ -209,56 +226,47 @@ public class GameController {
 
     //ATAQUES
     private void rangeAttackFirst(Entity player, Entity enemy){
-        int i = 0;
-        while(enemy.getLives() > 0 && i == 0){
+        System.out.println("¡Te toca atacar a ti primero!\n");
+
+        while(enemy.getLives() > 0 && enemy.getLives() > 0){
             attack(player, enemy);
-            if(enemy.getLives() <= 0 || player.getLives() <= 0) { 
-                i++;
-            }
-            displayState(player, enemy);
+            if(!playerIsAlive()) break; 
             attack(player, enemy);
-            if(enemy.getLives() <= 0 || player.getLives() <= 0) {
-                i++;
-            }
-            displayState(player, enemy);
+            if(!playerIsAlive()) break; 
             attack(enemy, player);
         }
     }
 
     private void meleeAttackFirst(Entity player, Entity enemy){
-        int i = 0;
-        while(player.getLives() > 0 && i == 0){
+        System.out.println("MELEE ATTACK FIRST\n");
+        while(player.getLives() > 0 && enemy.getLives() > 0){        
             attack(enemy, player);
-            if(player.getLives() <= 0) {
-                i++;
-            }
-            displayState(player, enemy);
+            if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
             attack(enemy, player);
-            if(player.getLives() <= 0 || player.getLives() <= 0) {
-                i++;
-            }
-            displayState(player, enemy);
+            if(!playerIsAlive() || !enemyIsAlive(enemy)) break; 
             attack(player, enemy);
-            i++;
         }
     }
     
     private void randomAttacks(Entity player, Entity enemy){
+        System.out.println("RANDOM ATTACKS\n");
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
+            // System.out.println("¡Atacas primero!");
             attack(player, enemy);
             attack(enemy, player);
         }
         else{
+            // System.out.println("TURNO: \n ");
             attack(enemy, player);
             attack(player, enemy);
         }
     }
     
-    // private boolean performAttack(Entity attacker, Entity attacked){
-    //     attack(attacker, attacked);
-    //     displayState(attacked, attacker);
-    //     return attacked.getLives() <= 0;
-    // }
-
+    private Boolean playerIsAlive(){
+        return this.player.getLives() > 0;
+    }
+    private Boolean enemyIsAlive(Entity enemy){
+        return enemy.getLives() > 0;
+    }
 
 }

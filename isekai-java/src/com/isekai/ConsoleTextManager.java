@@ -51,11 +51,11 @@ public class ConsoleTextManager {
                 waitSeconds(2);
                 break;
             case 2: //Ataque
-                System.out.println(this.entityAttack.getName() + " ataca a " + this.entityDefend.getName() + " con " + this.entityAttack.getPower() + " de daño\n");
+                System.out.println("--------" + this.entityAttack.getName() + " ataca a " + this.entityDefend.getName() + " con " + this.entityAttack.getPower() + " de daño" + "--------\n" );
                 break;
 
             case 3: //Curacion
-                System.out.println(this.entityAttack.getName() + " se ha curado y ahora tiene " + this.entityAttack.getLives() + " de vida");
+                System.out.println("--------"  + this.entityAttack.getName() + " se ha curado y ahora tiene " + this.entityAttack.getLives() + " de vida" + "--------\n");
                 break;
 
             case 4: //Defensa
