@@ -8,7 +8,7 @@ public abstract class Slime extends AbstractEnemy{
 
     public Slime() {
         //TODO por ahora verde
-        this.color = SlimeColor.GREEN;
+        this.color = SlimeColor.RED;
 
         this.attackType = AttackType.MELEE;
     }

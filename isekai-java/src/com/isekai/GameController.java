@@ -3,11 +3,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.AbstractPlayerDecorator;
-import com.isekai.entities.state.DeadState;
 
 public class GameController {
     private static GameController instance;
-    public final String DEFAULT_PLAYER_NAME = "Javi";
+    public static final String DEFAULT_PLAYER_NAME = "Javi";
 
     private WorldAbstractFactory world1Factory = new World1Factory();
     private WorldAbstractFactory world2Factory = new World2Factory();
@@ -28,13 +27,13 @@ public class GameController {
     private GameController() {
         super();
     }
-
+    
     public static GameController getInstance() {
         if(instance == null) {
             instance = new GameController();
         }
         return instance;
-    }
+    } 
 
     public void play() {
         System.out.println("Indica tu nombre para comenzar: ");
@@ -66,8 +65,10 @@ public class GameController {
             gameOver = true;
         }    
         if(gameOver) {
+            clearScreen(50);
             consoleTextManager.writeText(Texto.LOOSE);
         } else {
+            clearScreen(50);
             consoleTextManager.writeText(Texto.WIN);
         }
         
@@ -92,24 +93,37 @@ public class GameController {
         switch (scanner.nextInt()) {
             case 1:
                 playerType = PlayerType.PALADIN;
+                System.out.println("¡Has elegido Paladin!");
+                consoleTextManager.printPaladin();
                 break;
             case 2:
                 playerType = PlayerType.WIZARD;
+                System.out.println("¡Has elegido Mago!");
+                consoleTextManager.printWizard();
                 break;
             case 3:
                 playerType = PlayerType.BERSERK;
+                System.out.println("¡Has elegido Berserk!");
+
                 break;
             case 4:
                 playerType = PlayerType.KNIGHT;
+                System.out.println("¡Has elegido Caballero!");
+                consoleTextManager.printKnight();
                 break;
             case 5:
                 playerType = PlayerType.ARCHER;
+                System.out.println("¡Has elegido Arquero!");
+                consoleTextManager.printArcher();
                 break;
             default:
                 playerType = PlayerType.KNIGHT;
+                System.out.println("Al no elegir nada, te asignamos Caballero por defecto, pringao.");
                 break;
         }
-        
+
+        consoleTextManager.waitSeconds(6);
+        clearScreen(40);
         return playerFactory.createPlayer(playerType);
     }
 
@@ -139,6 +153,7 @@ public class GameController {
                 if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
 
                 System.out.println("¡¡¡¡" + enemy.toString() + " HA APARECIDO!!!!");
+                // consoleTextManager.printEnemy(enemy);
 
                 //compruebo si está vivo el enemigo
                 if(enemy.getLives() > 0) enemiesAlive++;
@@ -160,7 +175,7 @@ public class GameController {
                         }
                     }
                 }
-                System.out.println("¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!\n");
+                System.out.println(ConsoleTextManager.ANSI_RED + "¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!\n" + ConsoleTextManager.ANSI_RESET);
             }           
         
             //si al terminar el bucle, no hay enemigos vivos, se sale del bucle
@@ -169,9 +184,6 @@ public class GameController {
     }
 
     private void turn(Entity player, Entity enemy) {
-        // Llamar a los estados y al toString de ambos para tipico nombre, vida, etc de pokemon
-
-
         if(playerIsAlive() && enemyIsAlive(enemy)){
             // Si el player es rango y el enemy es cuerpo a cuerpo, el player empieza con turn()
             if(player.getAttackType() == AttackType.RANGE && enemy.getAttackType() == AttackType.MELEE) {
@@ -184,8 +196,12 @@ public class GameController {
         }
     }
 
-    private void attack(Entity attacker, Entity attaked) {   
+    private void attack(Entity attacker, Entity attaked) {
+        
+        displayState(attacker, attaked);
+        
         if(attacker instanceof AbstractPlayerDecorator) {
+
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1. Atacar");
             System.out.println("2. Curarte (" + numberOfCures + ")");
@@ -204,13 +220,11 @@ public class GameController {
                             attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10) * World.LEVEL2.getComplexFactor());
                         
                         consoleTextManager.writeText(attacker, Texto.HEAL);
-                        numberOfCures -= 1;
+                        numberOfCures--;
                     }
                     else{
                         System.out.println("No tienes pociones de curación");
                     }
-                    
-                    // Aquí va el código para curar al jugador
                     break;
                 default:
                     clearScreen(40);
@@ -247,6 +261,7 @@ public class GameController {
         }
     }
     private void displayState(Entity player, Entity enemy){
+        consoleTextManager.printEnemy(enemy);
         System.out.println("+---------------------------------------+");
         consoleTextManager.playerInfo(player, playerName);
         System.out.println("| " + enemy.toString() + " \t|");
@@ -279,6 +294,7 @@ public class GameController {
     
     private void randomAttacks(Entity player, Entity enemy){
         System.out.println("RANDOM ATTACKS\n");
+
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
             // System.out.println("¡Atacas primero!");
             attack(player, enemy);
@@ -297,4 +313,5 @@ public class GameController {
     private Boolean enemyIsAlive(Entity enemy){
         return enemy.getLives() > 0;
     }
+    
 }

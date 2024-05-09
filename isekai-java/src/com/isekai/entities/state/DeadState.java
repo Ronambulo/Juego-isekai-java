@@ -10,11 +10,12 @@ public class DeadState implements EntityState{
 
     @Override
     public void show(Entity entityContext) {
-        System.out.println("TAS MUERTO\n");
+        System.out.println("MUERTO");
     }
 
     @Override
     public void attack(Entity attacker, Entity attacked) {
         show(attacked);
     }
+    
 }
