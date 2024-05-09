@@ -1,0 +1,44 @@
+EL CONTEXTO DEBE SER EL GameController:
+
+
+class COMBAT(){
+    private AttackStrategy attackStrategy;
+
+    if(player.RANGO && enemy.MELEE){
+        this.attackStrategy(new RangeAttackStrategy());
+    }
+
+
+
+    public void setContextStrategy(AttackStrategy attackStrategy){
+        this.attackStrategy= attackStrategy;
+    }
+    public void getContextStrategy(){
+        return this.attackStrategy();
+    }
+
+    public void attack(){
+        this.attackStrategy.attack();
+    }
+
+
+}
+
+
+// tenemos:
+//SI EL PLAYER=RANGO Y ENEMY=MELEE: JUGADOR EMPIEZA PRIMERO (jugador pega 2 veces)
+//SI EL PLAYER=MELEE Y ENEMY=RANGO: ENEMY EMPIEZA PRIMERO (enemigo pega 2 veces)
+//SINO, RANDOM (1 y 1)
+
+//por tanto si los dos son rango pegan 1 y 1 -> no tiene sentido debería ser 2 y 2?
+// y si los dos son melee pegan 1 y 1
+
+//estrategia: estrategia en jugador? estrategia en enemigo?
+
+//ENTITY: DEBE TENER LA ESTRATEGIA - PERO NEUTRAL STRATEGY?
+
+//
+
+//cual es el contexto?: dependiendo de melee o rango -> hace un ataque
+
+//

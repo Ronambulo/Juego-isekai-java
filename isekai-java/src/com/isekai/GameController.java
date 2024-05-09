@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.AbstractPlayerDecorator;
+import com.isekai.entities.strategy.AttackStrategy;
 
 public class GameController {
     private static GameController instance;
@@ -25,7 +26,11 @@ public class GameController {
     private Integer numberOfCures = 3;
 
     private GameController() {
+        this(GameController.DEFAULT_PLAYER_NAME);
+    }
+    private GameController(String playerName) {
         super();
+        this.playerName = playerName;
     }
     
     public static GameController getInstance() {
@@ -38,9 +43,6 @@ public class GameController {
     public void play() {
         System.out.println("Indica tu nombre para comenzar: ");
         playerName = scanner.nextLine();   
-        if(playerName.isEmpty()) {
-            playerName = DEFAULT_PLAYER_NAME;
-        }
 
         consoleTextManager.writeText(Texto.INTRODUCTION);
         System.out.println("\n\n");
@@ -56,10 +58,11 @@ public class GameController {
         //Lógica del juego
         gameLogic(world1Enemies);
         currentWorld = 2;
+        // player.setLives(1000);
         gameLogic(world2Enemies);
  
 
-        if(player.getLives() <= 0) {
+        if(!playerIsAlive()) {
             System.out.println("Estado del jugador: ");
             player.getCurrentState().show(player);
             gameOver = true;
@@ -201,7 +204,6 @@ public class GameController {
         displayState(attacker, attaked);
         
         if(attacker instanceof AbstractPlayerDecorator) {
-
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1. Atacar");
             System.out.println("2. Curarte (" + numberOfCures + ")");
@@ -215,9 +217,9 @@ public class GameController {
                     clearScreen(40);
                     if(numberOfCures > 0){
                         if(currentWorld == 1)
-                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10));
+                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13));
                         else
-                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(5, 10) * World.LEVEL2.getComplexFactor());
+                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13) * World.LEVEL2.getComplexFactor());
                         
                         consoleTextManager.writeText(attacker, Texto.HEAL);
                         numberOfCures--;
@@ -296,12 +298,10 @@ public class GameController {
         System.out.println("RANDOM ATTACKS\n");
 
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
-            // System.out.println("¡Atacas primero!");
             attack(player, enemy);
             if(enemyIsAlive(enemy)) attack(enemy, player);
         }
         else{
-            // System.out.println("TURNO: \n ");
             attack(enemy, player);
             if(playerIsAlive()) attack(player, enemy);
         }

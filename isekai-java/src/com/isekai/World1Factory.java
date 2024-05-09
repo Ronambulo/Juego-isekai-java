@@ -27,8 +27,7 @@ public class World1Factory implements WorldAbstractFactory{
     @Override
     public Entity createRandomEnemy() {
         Entity enemy = null;
-        Calculator calculator = Calculator.getInstance();
-        Double random = calculator.getRandomDoubleBetweenRange(0, 100);
+        Double random = Calculator.getRandomDoubleBetweenRange(0, 100);
         
         if(random < 40){
             enemy = createSlime();
@@ -39,11 +38,11 @@ public class World1Factory implements WorldAbstractFactory{
         else if(random < 80){
             enemy = createGoat();
         }
-        else if(random < 90){
-            enemy = createOgre();
+        else if(random < 95){
+            enemy = createWolf();
         }
         else{
-            enemy = createWolf();
+            enemy = createOgre();
         }
 
         return enemy;

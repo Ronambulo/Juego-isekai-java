@@ -6,7 +6,7 @@ public class RangePlayer extends PlayerComponent{
     protected AttackType attackType;
 
     public RangePlayer() {
-        this.power = 40;
+        this.power = 10;
         this.lives = 20;
         this.attackType = AttackType.RANGE;
     }

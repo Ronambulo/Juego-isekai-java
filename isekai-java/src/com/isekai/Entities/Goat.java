@@ -3,7 +3,7 @@ package com.isekai.entities;
 import com.isekai.Calculator;
 
 public abstract class Goat extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 10;
+    protected final Integer DEFAULT_POWER = 6;
     protected final Integer DEFAULT_LIVES = 15;
     public Boolean scream;
 

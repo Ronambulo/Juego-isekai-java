@@ -6,7 +6,7 @@ public class MeleePlayer extends PlayerComponent{
     protected AttackType attackType;
 
     public MeleePlayer() {
-        this.power = 20;
+        this.power = 10;
         this.lives = 20;
         this.attackType = AttackType.MELEE;
     }

@@ -3,7 +3,7 @@ package com.isekai.entities;
 import com.isekai.Calculator;
 
 public abstract class Bee extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 17;
+    protected final Integer DEFAULT_POWER = 8;
     protected final Integer DEFAULT_LIVES = 10;
     public BeeType genre;
 

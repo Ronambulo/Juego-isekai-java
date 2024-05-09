@@ -2,7 +2,7 @@ package com.isekai.entities;
 
 public abstract class Ogre extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
-    protected final Integer DEFAULT_LIVES = 40;
+    protected final Integer DEFAULT_LIVES = 20;
     public String weapon;
 
     public Ogre() {
