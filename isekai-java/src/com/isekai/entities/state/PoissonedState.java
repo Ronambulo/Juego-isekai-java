@@ -10,18 +10,18 @@ public class PoissonedState implements EntityState{
 
     @Override
     public void show(Entity entityContext) {
-        if(entityContext.getLives() > 0){
-            System.out.println("El veneno ha hecho 1 de daño\n");
-            //al estar envenenado perderá 1 de vida en cada turno
-            entityContext.modifyHealth(-1);
-        }
-        else{
-            this.entity.setCurrentState(new DeadState(entityContext));
-        }
+        System.out.print("Estado de " + entityContext.getName() + ": \tEnvenenado");
     }
 
     @Override
     public void attack(Entity attacker, Entity attacked) {
-        show(attacked);
+        if(attacked.getLives() > 0){
+            //al estar envenenado perderá 5 de vida en cada turno
+            System.out.println("El veneno ha hecho 5 de daño\n");
+            attacked.modifyHealth(-5);
+        }
+        else{
+            this.entity.setCurrentState(new DeadState(attacked));
+        }
     }   
 }

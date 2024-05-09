@@ -12,4 +12,8 @@ public enum BeeType {
     public String getGenre() {
         return this.genre;
     }
+
+    public static BeeType getRandomGenre() {
+        return BeeType.values()[(int) (Math.random() * BeeType.values().length)];
+    }
 }

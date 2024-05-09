@@ -25,4 +25,6 @@ public class Calculator {
     public void calculateHealh(Entity entity, Integer healValue){
         entity.modifyHealth(healValue);
     }
+
+    
 }

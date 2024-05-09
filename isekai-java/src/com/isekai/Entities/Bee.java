@@ -9,12 +9,7 @@ public abstract class Bee extends AbstractEnemy{
 
     public Bee() {
         this.attackType = AttackType.RANGE;
-        if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1){
-            this.genre = BeeType.QUEEN;
-        }
-        else{
-            this.genre = BeeType.DRONE;
-        }
+        this.genre = BeeType.getRandomGenre();
     }
 
     public BeeType getGenre() {

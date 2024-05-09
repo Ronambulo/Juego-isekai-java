@@ -10,7 +10,7 @@ public class DeadState implements EntityState{
 
     @Override
     public void show(Entity entityContext) {
-        System.out.println("MUERTO");
+        System.out.print("Estado de " + entityContext.getName() + ": \tMUERTO");
     }
 
     @Override

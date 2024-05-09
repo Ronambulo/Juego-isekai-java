@@ -30,4 +30,6 @@ public abstract class AbstractEnemy extends Entity{
         return super.getClass().getSuperclass().getSimpleName() + " " + getModification() + "\tPoder: " + getPower() + " Vida: " + getLives();
     }
 
+    
+
 }

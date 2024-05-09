@@ -13,7 +13,7 @@ public class NormalState implements EntityState{
     @Override
     public void show(Entity entityContext) {
         if(entityContext.getLives() > 0){
-            System.out.println("Normal\n");
+            System.out.print("Estado de " + entityContext.getName() + ": \tNormal");
         }
         else{
             this.entity.setCurrentState(new DeadState(entityContext));
@@ -44,6 +44,5 @@ public class NormalState implements EntityState{
                 attacked.setCurrentState(new BurningState(attacked));
             }
         }
-        show(attacked);
     }
 }

@@ -1,5 +1,5 @@
 package com.isekai;
-import java.io.Console;
+import java.util.Scanner;
 import java.util.concurrent.*;
 import com.isekai.entities.*;
 
@@ -19,6 +19,7 @@ public class ConsoleTextManager {
     private Entity entityAttack;
     private Entity entityDefend;
     private static ConsoleTextManager instance;
+    private Scanner scanner = new Scanner(System.in);
 
     
 
@@ -119,8 +120,8 @@ public class ConsoleTextManager {
         } 
     }
 
-    public void playerInfo(Entity player, String playerName){
-        System.out.println("| " + playerName + "\t\tPoder: " + player.getPower() + " Vida: " + player.getLives() + " \t|");
+    public void playerInfo(Entity player){
+        System.out.println("| " + player.getName() + "\t\tPoder: " + player.getPower() + " Vida: " + player.getLives() + " \t|");
     }
 
     public void printEnemy(Entity enemy){
@@ -145,28 +146,116 @@ public class ConsoleTextManager {
                 else if( ((Slime)enemy).getModification().equals(SlimeColor.RAINBOW.getColor()) )
                     printSlimeRainbow();
                 break;
+            case "Dragon":
+                printDragon();
+                break;
             default:
                 break;
         }
     }
 
-    public void printWolf() {
-        System.out.println(ConsoleTextManager.ANSI_GREY +"       / \\      _-'");
-        System.out.println("     _/|  \\-''- _ /");
-        System.out.println("__-' { |          \\");
-        System.out.println("    /             \\");
-        System.out.println("    /       \"o.  |o }");
-        System.out.println("    |            \\ ;");
-        System.out.println("                  ',");
-        System.out.println("       \\_         __\\");
-        System.out.println("         ''-_    \\.//");
-        System.out.println("           / '-____'");
-        System.out.println("          /");
-        System.out.println("        _'");
-        System.out.println("      _-'" + ConsoleTextManager.ANSI_RESET);
+    public PlayerType playerSelection(){
+        System.out.println("Elije tu clase: ");
+        System.out.println("+----------------------------------------------------+");
+        System.out.println("| 1. Paladin     - MELEE    Vida: " + 60 + "      Daño: " + 14 + "   |");
+        System.out.println("| 2. Mago        - RANGO    Vida: " + 30 + "      Daño: " + 18 + "   |");
+        System.out.println("| 3. Berserk     - MELEE    Vida: " + 40 + "      Daño: " + 21 + "   |");
+        System.out.println("| 4. Caballero   - MELEE    Vida: " + 50 + "      Daño: " + 16 + "   |");
+        System.out.println("| 5. Arquero     - RANGO    Vida: " + 40 + "      Daño: " + 16 + "   |");
+        System.out.println("+----------------------------------------------------+\n");
+
+        PlayerType playerType;
+
+        switch (scanner.nextInt()) {
+            case 1:
+                playerType = PlayerType.PALADIN;
+                System.out.println("¡Has elegido Paladin!");
+                printPaladin();
+                break;
+            case 2:
+                playerType = PlayerType.WIZARD;
+                System.out.println("¡Has elegido Mago!");
+                printWizard();
+                break;
+            case 3:
+                playerType = PlayerType.BERSERK;
+                System.out.println("¡Has elegido Berserk!");
+                printBerserk();
+                break;
+            case 4:
+                playerType = PlayerType.KNIGHT;
+                System.out.println("¡Has elegido Caballero!");
+                printKnight();
+                break;
+            case 5:
+                playerType = PlayerType.ARCHER;
+                System.out.println("¡Has elegido Arquero!");
+                printArcher();
+                break;
+            default:
+                playerType = PlayerType.KNIGHT;
+                System.out.println("Al no elegir nada, te asignamos Caballero por defecto, pringao.");
+                printKnight();
+                break;
+        }
+
+        waitSeconds(6);
+        clearScreen(40);
+        return playerType;
     }
 
-    public void printOgre() {
+    public void clearScreen(Integer n){
+        for(int i = 0; i < n; i++) {
+            System.out.println();
+        }
+    }   
+
+    public void displayState(Entity player, Entity enemy){
+        printEnemy(enemy);
+        System.out.println("+---------------------------------------+");
+        playerInfo(player);
+        System.out.println("| Conocimiento Arcano: " + ((PlayerComponent)player).getArcaneKnowledge() + "\t\t|");
+        System.out.print("| ");
+        player.getCurrentState().show(player);
+        System.out.println("\t\t|");
+        System.out.println("+---------------------------------------+");
+        System.out.println("| " + enemy.toString() + " \t|");
+        System.out.print("| ");
+        enemy.getCurrentState().show(enemy);
+        System.out.println("\t\t|");
+        System.out.println("+---------------------------------------+");
+    }
+
+
+    private void printWolf() {
+        System.out.println(ConsoleTextManager.ANSI_GREY + "                              __");
+        System.out.println("                            .d$$b");
+        System.out.println("                          .' TO$;\\");
+        System.out.println("                         /  : TP._;");
+        System.out.println("                        / _.;  :Tb|");
+        System.out.println("                       /   /   ;j$j");
+        System.out.println("                   _.-\"       d$$$$");
+        System.out.println("                 .' ..       d$$$$;");
+        System.out.println("                /  /P'      d$$$$P. |\\");
+        System.out.println("               /   \"      .d$$$P' |\\^\"l");
+        System.out.println("             .'           `T$P^\"\"\"\"\"  :");
+        System.out.println("         ._.'      _.'                ;");
+        System.out.println("      `-.-\".-'-' ._.       _.-\"    .-\"");
+        System.out.println("    `.-\" _____  ._              .-\"");
+        System.out.println("   -(.g$$$$$$$b.              .'");
+        System.out.println("     \"\"^^T$$$P^)            .(:");
+        System.out.println("       _/  -\"  /.'         /:/;");
+        System.out.println("    ._.'-'`-'  \")/         /;/;");
+        System.out.println(" `-.-\"..--\"\"   \" /         /  ;");
+        System.out.println(".-\" ..--\"\"        -'          :");
+        System.out.println("..--\"\"--.-\"         (\\      .-(\\");
+        System.out.println("  ..--\"\"              `\\-(\\/;`");
+        System.out.println("    _.                      :");
+        System.out.println("                            ;`-");
+        System.out.println("                           :\\");
+        System.out.println("                           ;  " + ConsoleTextManager.ANSI_RESET);
+    }
+    private void printOgre() {
         System.out.println(ConsoleTextManager.ANSI_GREEN + "                           __,='`````'=/__");
         System.out.println("                          '//  (o) \\(o) \\ `'         _,-,");
         System.out.println("                          //|     ,_)   (`\\      ,-'`_,-\\");
@@ -187,8 +276,7 @@ public class ConsoleTextManager {
         System.out.println("                        \\,---_|    |_---./");
         System.out.println("                        ooOO(_)    (_)OOoo" + ConsoleTextManager.ANSI_RESET);
     }
-    
-    public void printBee() {
+    private void printBee() {
         System.out.println(ConsoleTextManager.ANSI_YELLOW + "      .-.         .--''-.");
         System.out.println("    .'   '.     /'       `.");
         System.out.println("    '.     '. ,'          |");
@@ -201,8 +289,7 @@ public class ConsoleTextManager {
         System.out.println("        \\  \\ \\");
         System.out.println("        '  ' '" + ConsoleTextManager.ANSI_RESET);
     }
-    
-    public void printGoat() {
+    private void printGoat() {
         System.out.println("             ,--._,--.");
         System.out.println("           ,'  ,'   ,-`.");
         System.out.println("(`-.__    /  ,'   /");
@@ -220,9 +307,7 @@ public class ConsoleTextManager {
         System.out.println("        \\ \\   :");
         System.out.println("         `");
     }
-    
-
-    public void printSlimeRed() {
+    private void printSlimeRed() {
         System.out.println(ConsoleTextManager.ANSI_RED + "          ██████████          ");
         System.out.println("      ████░░░░░░░░░░████      ");
         System.out.println("    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
@@ -236,7 +321,7 @@ public class ConsoleTextManager {
         System.out.println("  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
         System.out.println("    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
     }
-    public void printSlimeBlue() {
+    private void printSlimeBlue() {
         System.out.println(ConsoleTextManager.ANSI_BLUE + "          ██████████          ");
         System.out.println("      ████░░░░░░░░░░████      ");
         System.out.println("    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
@@ -250,7 +335,7 @@ public class ConsoleTextManager {
         System.out.println("  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
         System.out.println("    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
     }
-    public void printSlimeRainbow() {
+    private void printSlimeRainbow() {
         System.out.println(ConsoleTextManager.ANSI_RED +   "          ██████████          ");
         System.out.println(                              "      ████░░░░░░░░░░████      ");
         System.out.println(                              "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
@@ -264,10 +349,68 @@ public class ConsoleTextManager {
         System.out.println(ConsoleTextManager.ANSI_PURPLE +"  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
         System.out.println(                                "    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
     }
-    
+    private void printDragon(){
+        System.out.println(ConsoleTextManager.ANSI_RED + "                                                                                                ░░                                                                          ");
+        System.out.println("                                                                    ░░░░▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓░░                                                                    ");
+        System.out.println("                                                                ░░░░          ▓▓▒▒▒▒▓▓▓▓██▓▓▒▒▓▓                                                                ");
+        System.out.println("                                                                              ▒▒▓▓▓▓▓▓▓▓▓▓▓▓██▒▒                                                                ");
+        System.out.println("                                                                        ░░▒▒▓▓▓▓▒▒▓▓▒▒▒▒▓▓▓▓▓▓                                                                  ");
+        System.out.println("                                                                    ▒▒▓▓▓▓▒▒▒▒▓▓▓▓▒▒▒▒▓▓▓▓░░                                                                    ");
+        System.out.println("                                                                ▒▒▒▒▓▓▒▒▒▒▓▓▓▓▓▓▒▒▒▒▓▓▓▓░░░░                                                                    ");
+        System.out.println("                                                          ▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓        ░░                  ░░                                            ");
+        System.out.println("                                                      ░░▒▒▒▒▒▒▓▓▒▒▒▒▓▓▓▓▒▒▓▓▒▒▓▓▓▓▓▓▒▒░░  ░░  ░░░░  ░░░░        ░░▒▒                                            ");
+        System.out.println("                                              ░░░░░░▓▓▒▒▒▒▒▒▓▓▒▒▒▒▓▓▓▓▒▒▓▓▒▒▓▓▓▓██▓▓      ░░░░░░░░░░    ░░░░  ▒▒▓▓▒▒                                            ");
+        System.out.println("                                                ▓▓▒▒▒▒▒▒▒▒▓▓▒▒░░▓▓▓▓▓▓▒▒▓▓▒▒▓▓▓▓██▒▒        ░░░░░░░░  ░░  ░░▒▒▓▓▓▓▓▓              ░░                            ");
+        System.out.println("                                              ▓▓▒▒▒▒▒▒▒▒▓▓░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░        ░░░░░░░░  ▓▓▓▓▓▓▒▒▒▒▒▒▓▓            ░░                              ");
+        System.out.println("                                            ▓▓▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓░░          ░░░░░░░░░░▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓                          ▒▒▒▒▒▒  ");
+        System.out.println("                                        ▓▓▒▒▒▒▒▒▒▒▓▓▒▒░░▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░  ░░░░░░░░░░░░▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓                    ▒▒▒▒▓▓▒▒▒▒▓▓▒▒");
+        System.out.println("                              ░░    ░░▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░      ░░▒▒▒▒▒▒▓▓▒▒▓▓▒▒▒▒▒▒▓▓▒▒▒▒▓▓▒▒              ░░▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓  ");
+        System.out.println("                                ░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░░░░░░░░░▒▒▓▓▓▓░░▒▒▓▓▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▓▓          ░░▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒▒▓▓  ");
+        System.out.println("                            ░░░░▓▓▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓██▓▓▓▓▒▒▓▓▒▒░░░░░░░░░░░░░░░░▒▒▓▓▒▒▒▒░░▒▒▓▓▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓      ░░▒▒▒▒▒▒▒▒▒▒▒▒░░      ░░▒▒  ");
+        System.out.println("                          ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▒▒▓▓░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▒▒░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░          ▓▓  ");
+        System.out.println("                      ░░░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░░░▓▓▒▒▒▒▒▒▓▓░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░            ▒▒  ");
+        System.out.println("                      ░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒██▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓░░            ░░    ");
+        System.out.println("                    ░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░░░░░░░▒▒▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒░░                    ");
+        System.out.println("                  ░░▒▒▒▒▒▒░░▒▒▒▒▒▒▓▓▒▒░░▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓████▓▓▓▓████▓▓▓▓▓▓▓▓▓▓░░░░░░▒▒▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒░░                      ");
+        System.out.println("                ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓░░░░░░▒▒▒▒░░▒▒▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒                          ");
+        System.out.println("              ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▒▒▓▓▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░▒▒░░▓▓▓▓▓▓▒▒░░░░░░░░▒▒▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▓▓▒▒░░░░░░                      ");
+        System.out.println("            ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓░░░░░░░░▒▒▓▓▓▓░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒░░░░░░░░                      ");
+        System.out.println("          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒░░░░░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▒▒░░░░▒▒▓▓  ░░░░░░▒▒▒▒▒▒▒▒▒▒░░░░▒▒▒▒▒▒▒▒▓▓▒▒░░░░░░  ░░░░                    ");
+        System.out.println("        ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒░░░░░░░░░░▓▓▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▒▒▓▓▓▓▒▒▒▒▒▒▒▒▓▓▒▒░░░░░░▒▒▒▒▒▒▓▓▒▒░░░░░░░░░░░░░░                  ");
+        System.out.println("      ░░▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒░░░░░░░░░░▓▓░░░░░░░░░░░░▓▓░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▒▒░░▓▓▓▓▒▒▓▓▓▓░░░░░░▒▒▒▒▒▒▒▒▓▓░░░░░░░░░░    ░░░░                ");
+        System.out.println("      ▒▒▒▒▒▒▒▒░░▒▒▒▒▒▒▓▓▒▒░░░░░░░░░░░░▒▒░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░▒▒▒▒▒▒▓▓░░░░░░░░░░░░░░░░                  ");
+        System.out.println("    ░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓░░░░░░░░▒▒▒▒▒▒▒▒░░░░░░░░░░    ░░                  ");
+        System.out.println("    ▓▓░░▒▒▒▒▒▒▒▒▒▒▒▒▓▓░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░░░░▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░                  ");
+        System.out.println("    ░░  ░░░░▒▒▒▒▒▒▓▓▒▒░░░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓▓▓▓▓▒▒▒▒░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░░░▒▒▒▒▒▒░░░░░░░░░░░░                        ");
+        System.out.println("  ▒▒    ░░▒▒▒▒▒▒▓▓▒▒░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒                                    ");
+        System.out.println("        ▒▒▒▒▒▒▒▒▒▒░░  ░░░░░░░░░░░░▒▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒▒▒░░░░░░░░░░▒▒▒▒▒▒▒▒                                    ");
+        System.out.println("        ▒▒▒▒▒▒▒▒        ░░░░░░░░░░▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒░░░░░░░░▒▒▒▒▒▒▒▒                                    ");
+        System.out.println("      ░░▒▒▒▒▓▓            ░░░░░░▒▒▒▒▓▓▓▓▓▓▒▒░░░░░░░░░░░░░░░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▒▒▒▒▒▒▒▒░░░░░░▒▒▒▒▒▒░░                                    ");
+        System.out.println("      ▒▒▒▒▓▓                ░░░░▒▒▒▒▓▓▒▒▒▒░░░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒▒▒▓▓                                      ");
+        System.out.println("      ░░▒▒▒▒                  ░░▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░░░░░░░░▒▒▒▒▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▒▒▒▒▒▒▒▒▓▓░░                                      ");
+        System.out.println("    ░░  ▒▒                      ▒▒▓▓▒▒▓▓▒▒▒▒░░░░░░░░░░░░▒▒▒▒▒▒▒▒░░▓▓░░▓▓████▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▓▓░░                                      ");
+        System.out.println("      ░░▓▓                      ▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▒▒▓▓▓▓▒▒▒▒▓▓▓▓░░                                      ");
+        System.out.println("      ▒▒▒▒                        ▓▓▓▓▓▓▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▓▓▒▒▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▓▓▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓▓▓░░                                      ");
+        System.out.println("      ▒▒                          ░░▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒▓▓▒▒▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓░░▓▓▓▓░░▓▓▓▓  ░░                                    ");
+        System.out.println("    ░░▒▒                              ▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓▒▒▒▒▓▓▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒▒▒░░▓▓▓▓▒▒▓▓▓▓▒▒░░                                    ");
+        System.out.println("      ▓▓                                  ░░▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▓▓▓▓▓▓▓▓▓▓▒▒▒▒░░▒▒░░                              ");
+        System.out.println("      ▓▓                                      ░░░░▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░  ░░▒▒▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒▒  ░░  ▓▓▓▓▓▓▓▓▓▓░░▒▒░░▒▒▒▒▒▒                            ");
+        System.out.println("      ▒▒                                            ▓▓▓▓▓▓▓▓▓▓▓▓▓▓██▓▓▓▓░░        ▒▒    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒      ▒▒▓▓▓▓▓▓▓▓    ░░░░▒▒▒▒▒▒                          ");
+        System.out.println("      ░░                                          ░░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓            ▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░      ▓▓▓▓▓▓▓▓▓▓▒▒          ▒▒░░                        ");
+        System.out.println("        ░░                                        ▒▒▓▓██▓▓▓▓▓▓▓▓▓▓▓▓                ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒        ▓▓▓▓▓▓▓▓▓▓                                      ");
+        System.out.println("                                                  ▓▓▓▓██▓▓▓▓▓▓▓▓▓▓                    ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒        ██▓▓▒▒▒▒▓▓▒▒                                    ");
+        System.out.println("                                                ░░▓▓▒▒▓▓▒▒▒▒▓▓▒▒                      ▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓░░        ░░▓▓▒▒▓▓▒▒▓▓                                    ");
+        System.out.println("                                                ▒▒▓▓▒▒▓▓▒▒░░            ░░░░░░░░  ░░  ░░▓▓▓▓▓▓▒▒▒▒▓▓▓▓            ▒▒▓▓▒▒▒▒▓▓▒▒                                  ");
+        System.out.println("                                                ▒▒▓▓▒▒▓▓▒▒  ░░░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▓▓░░░░░░░░░░░░░░░░░░    ▓▓▓▓▒▒▓▓                                  ");
+        System.out.println("                                              ░░▓▓▓▓▒▒▓▓▓▓░░░░░░░░░░░░░░░░░░░░░░░░  ░░░░▓▓▓▓▓▓▒▒▓▓░░░░░░░░░░░░░░      ░░▓▓▒▒▒▒▒▒                                ");
+        System.out.println("                                            ░░▓▓▓▓▒▒▓▓▓▓▒▒░░    ░░░░░░░░░░░░░░░░░░░░░░░░░░▓▓▓▓▓▓▒▒▓▓▒▒▒▒░░            ░░▓▓▒▒▓▓▒▒▓▓                              ");
+        System.out.println("                                            ▒▒▓▓▒▒▒▒▓▓▓▓▓▓▒▒░░          ░░░░  ░░          ▒▒▓▓▓▓░░▓▓▓▓▒▒▒▒            ░░▓▓▓▓▒▒▓▓▒▒▓▓▒▒                          ");
+        System.out.println("                                            ▒▒▒▒  ▓▓▒▒▒▒▒▒▒▒░░                                  ▒▒    ░░                ▒▒▓▓▒▒▒▒▓▓▒▒░░▒▒                        ");
+        System.out.println("                                            ░░    ░░▒▒      ░░                                                          ░░  ▒▒▒▒  ░░░░▒▒                        " + ConsoleTextManager.ANSI_RESET);
+    }
     
 
-    public void printKnight() {
+    private void printKnight() {
         System.out.println("      /\\");
         System.out.println("      ||");
         System.out.println("      ||");
@@ -293,8 +436,7 @@ public class ConsoleTextManager {
         System.out.println("               _\\.:||:./_");
         System.out.println("              /____/\\____\\");
     }
-    
-    public void printArcher() {
+    private void printArcher() {
         System.out.println("                                                      |");
         System.out.println("                                                        \\.");
         System.out.println("                                                        /|.");
@@ -336,8 +478,7 @@ public class ConsoleTextManager {
         System.out.println("                                                         /.");
         System.out.println("                                                        |.");
     }
-    
-    public void printPaladin() {
+    private void printPaladin() {
         System.out.println("                            _____");
         System.out.println("             ,             /@@@@@=-");
         System.out.println("             \\            @@@@@@@@@@=-");
@@ -364,8 +505,7 @@ public class ConsoleTextManager {
         System.out.println(" /__/           /__/     _/__/");
         System.out.println("                         /__/");
     }
-    
-    public void printWizard() {
+    private void printWizard() {
         System.out.println("                    ____ ");
         System.out.println("                  .'* *.'");
         System.out.println("               __/_*_*(_");
@@ -389,8 +529,7 @@ public class ConsoleTextManager {
         System.out.println(" _.-'       |      BBb       '-.  '-.");
         System.out.println("(________mrf\\____.dBBBb.________)____)");
     }
-
-    public void printBerserk(){
+    private void printBerserk(){
         //! PLACEHOLDER
         System.out.println("                                           _.gd8888888bp._");
         System.out.println("                                        .g88888888888888888p.");
@@ -411,5 +550,5 @@ public class ConsoleTextManager {
         System.out.println("                                        \"Y88888888888888888P\"");
         System.out.println("                                           \"\"YY8888888PP\"");
     }
-    
+
 }

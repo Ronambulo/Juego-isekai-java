@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.AbstractPlayerDecorator;
-import com.isekai.entities.strategy.AttackStrategy;
+import com.isekai.entities.strategy.*;
 
 public class GameController {
     private static GameController instance;
@@ -14,7 +14,6 @@ public class GameController {
     private PlayerFactory playerFactory = new PlayerFactory();
     private ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
     private PlayerComponent player;
-    private Calculator calculator = Calculator.getInstance();
     private String playerName;
 
     private ArrayList<Entity> world1Enemies;
@@ -23,16 +22,12 @@ public class GameController {
     private Scanner scanner = new Scanner(System.in);
     private Boolean gameOver = false;
     private Integer currentWorld = 1;
-    private Integer numberOfCures = 3;
 
-    private GameController() {
-        this(GameController.DEFAULT_PLAYER_NAME);
-    }
-    private GameController(String playerName) {
-        super();
-        this.playerName = playerName;
-    }
-    
+    //ESTRATEGIAS
+    private AttackActionStrategy attackActionStrategy = new AttackActionStrategy();
+    private HealActionStrategy healActionStrategy = new HealActionStrategy();
+    private InvisibilityActionStrategy invisibilityActionStrategy = new InvisibilityActionStrategy();
+
     public static GameController getInstance() {
         if(instance == null) {
             instance = new GameController();
@@ -43,11 +38,12 @@ public class GameController {
     public void play() {
         System.out.println("Indica tu nombre para comenzar: ");
         playerName = scanner.nextLine();   
+        if(playerName.isEmpty()) playerName = GameController.DEFAULT_PLAYER_NAME;
 
         consoleTextManager.writeText(Texto.INTRODUCTION);
         System.out.println("\n\n");
         //seleccionar jugador
-        player = SelectPlayer();
+        player = playerFactory.createPlayer(consoleTextManager.playerSelection());
         //Una vez seleccionado, podremos modificar el nombre
         player.setName(playerName);
 
@@ -68,67 +64,13 @@ public class GameController {
             gameOver = true;
         }    
         if(gameOver) {
-            clearScreen(50);
+            consoleTextManager.clearScreen(50);
             consoleTextManager.writeText(Texto.LOOSE);
         } else {
-            clearScreen(50);
+            consoleTextManager.clearScreen(50);
             consoleTextManager.writeText(Texto.WIN);
         }
         
-    }
-
-    private PlayerComponent SelectPlayer(){
-        PlayerType playerType;
-        System.out.println("Elije tu clase: ");
-        System.out.println("+----------------------------------------------------+");
-        player = playerFactory.createPlayer(PlayerType.PALADIN);
-        System.out.println("| 1. Paladin     - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
-        player = playerFactory.createPlayer(PlayerType.WIZARD);
-        System.out.println("| 2. Mago        - RANGO    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
-        player = playerFactory.createPlayer(PlayerType.BERSERK);
-        System.out.println("| 3. Berserk     - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
-        player = playerFactory.createPlayer(PlayerType.KNIGHT);
-        System.out.println("| 4. Caballero   - MELEE    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
-        player = playerFactory.createPlayer(PlayerType.ARCHER);
-        System.out.println("| 5. Arquero     - RANGO    Vida: " + player.getLives() + "      Daño: " + player.getPower() + "   |");
-        System.out.println("+----------------------------------------------------+\n");
-
-        switch (scanner.nextInt()) {
-            case 1:
-                playerType = PlayerType.PALADIN;
-                System.out.println("¡Has elegido Paladin!");
-                consoleTextManager.printPaladin();
-                break;
-            case 2:
-                playerType = PlayerType.WIZARD;
-                System.out.println("¡Has elegido Mago!");
-                consoleTextManager.printWizard();
-                break;
-            case 3:
-                playerType = PlayerType.BERSERK;
-                System.out.println("¡Has elegido Berserk!");
-                consoleTextManager.printBerserk();
-                break;
-            case 4:
-                playerType = PlayerType.KNIGHT;
-                System.out.println("¡Has elegido Caballero!");
-                consoleTextManager.printKnight();
-                break;
-            case 5:
-                playerType = PlayerType.ARCHER;
-                System.out.println("¡Has elegido Arquero!");
-                consoleTextManager.printArcher();
-                break;
-            default:
-                playerType = PlayerType.KNIGHT;
-                System.out.println("Al no elegir nada, te asignamos Caballero por defecto, pringao.");
-                consoleTextManager.printKnight();
-                break;
-        }
-
-        consoleTextManager.waitSeconds(6);
-        clearScreen(40);
-        return playerFactory.createPlayer(playerType);
     }
 
     private Entity spawnRandomEnemy(WorldAbstractFactory factory) {
@@ -173,7 +115,7 @@ public class GameController {
                         //PARA LAS CURAS
                         turns++;
                         if(turns==3){
-                            numberOfCures +=1;
+                            player.setNumberOfCures(player.getNumberOfCures() + 1);
                             // reseteamos el contador de turnos
                             turns = 0;
                         }
@@ -200,77 +142,59 @@ public class GameController {
         }
     }
 
-    private void attack(Entity attacker, Entity attaked) {
+    private void attack(Entity attacker, Entity attacked) {
         
-        displayState(attacker, attaked);
+        if(attacker instanceof AbstractPlayerDecorator) {
+            consoleTextManager.displayState(attacker, attacked);
+        } else {
+            consoleTextManager.displayState(attacked, attacker);
+        }
         
         if(attacker instanceof AbstractPlayerDecorator) {
             System.out.println("¿Qué deseas hacer?");
             System.out.println("1. Atacar");
-            System.out.println("2. Curarte (" + numberOfCures + ")");
-            switch(scanner.nextInt()) {
+            System.out.println("2. Curarte (Contienes " + attacker.getNumberOfCures() + " curas)");
+            System.out.println("3. Hacer invisible ( Coste: 10 de " + ConsoleTextManager.ANSI_BLUE + "■ "+"Conocimiento Arcano" + " ■" + ConsoleTextManager.ANSI_RESET + " )");
+            switch(scanner.nextInt()) { 
                 case 1:
-                    clearScreen(40);
-                    attaked.setLives(calculator.calculateLives(attacker, attaked));
-                    consoleTextManager.writeText(attacker, attaked, Texto.ATTACK);
+                    consoleTextManager.clearScreen(40);
+                    attacker.setContextStrategy(attackActionStrategy);
+                    attacker.getContextStrategy().performAction(attacker, attacked);
                     break;
                 case 2:
-                    clearScreen(40);
-                    if(numberOfCures > 0){
-                        if(currentWorld == 1)
-                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13));
-                        else
-                            attacker.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13) * World.LEVEL2.getComplexFactor());
-                        
-                        consoleTextManager.writeText(attacker, Texto.HEAL);
-                        numberOfCures--;
-                    }
-                    else{
-                        System.out.println("No tienes pociones de curación");
-                    }
+                    consoleTextManager.clearScreen(40);
+                    attacker.setContextStrategy(healActionStrategy);
+                    attacker.getContextStrategy().performAction(currentWorld, attacker);
+                    break;
+                case 3:
+                    consoleTextManager.clearScreen(40);
+                    attacker.setContextStrategy(invisibilityActionStrategy);
+                    attacker.getContextStrategy().performAction(attacker, attacked);
                     break;
                 default:
-                    clearScreen(40);
-                    attaked.setLives(calculator.calculateLives(attacker, attaked));
-                    consoleTextManager.writeText(attacker, attaked, Texto.ATTACK);
+                    consoleTextManager.clearScreen(40);
+                    attacker.setContextStrategy(attackActionStrategy);
+                    attacker.getContextStrategy().performAction(attacker, attacked);
                     break;
             }
-            if(attaked.getLives() > 0) {
-                System.out.println("Estado del Enemigo:");
-                attaked.getCurrentState().attack(attacker, attaked); 
+            if(attacked.getLives() > 0) {
+                attacked.getCurrentState().attack(attacker, attacked); 
             } 
 
         }else if(attacker instanceof AbstractEnemy) {              
             if(player.getLives() > 0) {
-                attaked.modifyHealth(-attacker.getPower());
-                System.out.println("Estado del jugador:");
-                attaked.getCurrentState().attack(attacker, attaked); 
-                consoleTextManager.writeText(attacker, attaked, Texto.ATTACK);
+                if(attacked.getContextStrategy() instanceof InvisibilityActionStrategy){
+                    System.out.println("¡¡¡¡" + attacked.getName() + " es invisible, " + attacker.getName() + " es atacado" + "!!!!");
+                    attacked.getContextStrategy().performAction(attacked, attacker);
+                }
+                else{
+                    attacked.modifyHealth(-attacker.getPower());
+                    attacked.getCurrentState().attack(attacker, attacked); 
+                    consoleTextManager.writeText(attacker, attacked, Texto.ATTACK);
+                }
             }
         }
-        //al Text manager para mostrar el ataque
-        // al show para los estados
-
-        if(attacker instanceof AbstractPlayerDecorator) {
-            displayState(attacker, attaked);
-        } else {
-            displayState(attaked, attacker);
-        }
     }
-
-    public void clearScreen(Integer n){
-        for(int i = 0; i < n; i++) {
-            System.out.println();
-        }
-    }
-    private void displayState(Entity player, Entity enemy){
-        consoleTextManager.printEnemy(enemy);
-        System.out.println("+---------------------------------------+");
-        consoleTextManager.playerInfo(player, playerName);
-        // System.out.println("| " + enemy.toString() + " \t|");
-        System.out.println("+---------------------------------------+");
-    }
-
     //ATAQUES
     private void rangeAttackFirst(Entity player, Entity enemy){
         System.out.println("¡Te toca atacar a ti primero!\n");
@@ -296,8 +220,6 @@ public class GameController {
     }
     
     private void randomAttacks(Entity player, Entity enemy){
-        //System.out.println("RANDOM ATTACKS\n");
-
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
             attack(player, enemy);
             if(enemyIsAlive(enemy)) attack(enemy, player);

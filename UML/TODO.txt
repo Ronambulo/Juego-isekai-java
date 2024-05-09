@@ -1,0 +1,16 @@
+COSAS POR HACER
+
+
+- Revisar con el Enunciado
+
+- Enemigos sueltan Arcano
+- Calculator
+- Añadir 1 estrategia más
+- Añadir colorines tontos
+- Hacer boss (dragon) + Mundos infinitos
+- Mirar metodos y atributos repetidos
+- Ordenar los paquetes
+- COMENTAR EL CODIGO
+
+- UML
+- Documento pdf explicativo
