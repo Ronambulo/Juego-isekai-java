@@ -1,4 +1,5 @@
 package com.isekai;
+import java.io.Console;
 import java.util.concurrent.*;
 import com.isekai.entities.*;
 
@@ -11,6 +12,8 @@ public class ConsoleTextManager {
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_BROWN = "\u001B[33m";
     public static final String ANSI_GREY = "\u001B[37m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
 
     private Texto numberToText;
     private Entity entityAttack;
@@ -51,6 +54,7 @@ public class ConsoleTextManager {
     private void numberToText(){
         switch (this.numberToText.getNumber()) {
             case 1: //introduccion
+                //! DESCOMENTAR PARA USAR   
                 // typeWriter("Bienvenido a Isekai, el juego de rol por consola, donde tu eres el protagonista y debes enfrentarte a los monstruos de este mundo para poder volver al tuyo.", 50);
                 // waitSeconds(1);
                 // typeWriter("Ibas caminando por la calle cuando de repente te desmayaste y al despertar te encontrabas en un lugar desconocido...\n", 50);
@@ -83,12 +87,12 @@ public class ConsoleTextManager {
                 System.out.println("╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ");                
                 break;
             case 7: //Derrota
-                System.out.println(" ██╗  ██╗ █████╗ ███████╗    ███╗   ███╗██╗   ██╗███████╗██████╗ ████████╗ ██████╗ ");
-                System.out.println(" ██║  ██║██╔══██╗██╔════╝    ████╗ ████║██║   ██║██╔════╝██╔══██╗╚══██╔══╝██╔═══██╗");
-                System.out.println(" ███████║███████║███████╗    ██╔████╔██║██║   ██║█████╗  ██████╔╝   ██║   ██║   ██║");
-                System.out.println(" ██╔══██║██╔══██║╚════██║    ██║╚██╔╝██║██║   ██║██╔══╝  ██╔══██╗   ██║   ██║   ██║");
-                System.out.println(" ██║  ██║██║  ██║███████║    ██║ ╚═╝ ██║╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝");
-                System.out.println(" ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ ");
+                System.out.println(ConsoleTextManager.ANSI_RED + " ██╗  ██╗ █████╗ ███████╗    ███╗   ███╗██╗   ██╗███████╗██████╗ ████████╗ ██████╗ ");
+                System.out.println(                            " ██║  ██║██╔══██╗██╔════╝    ████╗ ████║██║   ██║██╔════╝██╔══██╗╚══██╔══╝██╔═══██╗");
+                System.out.println(                            " ███████║███████║███████╗    ██╔████╔██║██║   ██║█████╗  ██████╔╝   ██║   ██║   ██║");
+                System.out.println(                            " ██╔══██║██╔══██║╚════██║    ██║╚██╔╝██║██║   ██║██╔══╝  ██╔══██╗   ██║   ██║   ██║");
+                System.out.println(                            " ██║  ██║██║  ██║███████║    ██║ ╚═╝ ██║╚██████╔╝███████╗██║  ██║   ██║   ╚██████╔╝");
+                System.out.println(                              " ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝    ╚═╝     ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝    ╚═════╝ " + ConsoleTextManager.ANSI_RESET);
                 break;
             default:
                 break;
@@ -134,7 +138,12 @@ public class ConsoleTextManager {
                 printGoat();
                 break;
             case "Slime":
-                // printSlime();
+                if( ((Slime)enemy).getModification().equals(SlimeColor.RED.getColor()) )
+                    printSlimeRed();
+                else if( ((Slime)enemy).getModification().equals(SlimeColor.BLUE.getColor()) )
+                    printSlimeBlue();
+                else if( ((Slime)enemy).getModification().equals(SlimeColor.RAINBOW.getColor()) )
+                    printSlimeRainbow();
                 break;
             default:
                 break;
@@ -212,9 +221,9 @@ public class ConsoleTextManager {
         System.out.println("         `");
     }
     
-    //!FALTA SLIME
-    public void printSlime() {
-        System.out.println("          ██████████          ");
+
+    public void printSlimeRed() {
+        System.out.println(ConsoleTextManager.ANSI_RED + "          ██████████          ");
         System.out.println("      ████░░░░░░░░░░████      ");
         System.out.println("    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
         System.out.println("  ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██  ");
@@ -225,13 +234,41 @@ public class ConsoleTextManager {
         System.out.println("██▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██");
         System.out.println("██▓▓▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▓▓██");
         System.out.println("  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
-        System.out.println("    ██████████████████████    ");
+        System.out.println("    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
+    }
+    public void printSlimeBlue() {
+        System.out.println(ConsoleTextManager.ANSI_BLUE + "          ██████████          ");
+        System.out.println("      ████░░░░░░░░░░████      ");
+        System.out.println("    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
+        System.out.println("  ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██  ");
+        System.out.println("  ██▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██  ");
+        System.out.println("██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██");
+        System.out.println("██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██");
+        System.out.println("██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
+        System.out.println("██▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██");
+        System.out.println("██▓▓▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▓▓██");
+        System.out.println("  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
+        System.out.println("    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
+    }
+    public void printSlimeRainbow() {
+        System.out.println(ConsoleTextManager.ANSI_RED +   "          ██████████          ");
+        System.out.println(                              "      ████░░░░░░░░░░████      ");
+        System.out.println(                              "    ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ");
+        System.out.println(ConsoleTextManager.ANSI_YELLOW +"  ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██  ");
+        System.out.println(                              "  ██▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██  ");
+        System.out.println(ConsoleTextManager.ANSI_GREEN + "██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██");
+        System.out.println(                              "██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██");
+        System.out.println(                              "██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██");
+        System.out.println(ConsoleTextManager.ANSI_BLUE +  "██▒▒▒▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒▒▒▒██");
+        System.out.println(                              "██▓▓▒▒▒▒▒▒▒▒██████▒▒▒▒▒▒▒▒▓▓██");
+        System.out.println(ConsoleTextManager.ANSI_PURPLE +"  ██▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓██  ");
+        System.out.println(                                "    ██████████████████████    " + ConsoleTextManager.ANSI_RESET);
     }
     
     
 
     public void printKnight() {
-        System.out.println("    /\\");
+        System.out.println("      /\\");
         System.out.println("      ||");
         System.out.println("      ||");
         System.out.println("      ||");
@@ -351,6 +388,28 @@ public class ConsoleTextManager {
         System.out.println("     _.-'    /     Bb     '-. '-._");
         System.out.println(" _.-'       |      BBb       '-.  '-.");
         System.out.println("(________mrf\\____.dBBBb.________)____)");
+    }
+
+    public void printBerserk(){
+        //! PLACEHOLDER
+        System.out.println("                                           _.gd8888888bp._");
+        System.out.println("                                        .g88888888888888888p.");
+        System.out.println("                                      .d8888P\"\"       \"\"Y8888b.");
+        System.out.println("                                      \"Y8P\"               \"Y8P'");
+        System.out.println("                                         `.               ,'");
+        System.out.println("                                           \\     .-.     /");
+        System.out.println("                                            \\   (___)   /");
+        System.out.println(" .------------------._______________________:__________j");
+        System.out.println("/                   |                      |           |`-.,_");
+        System.out.println("\\###################|######################|###########|,-'`");
+        System.out.println(" `------------------'                       :    ___   l");
+        System.out.println("                                            /   (   )   \\");
+        System.out.println("                                           /     `-'     \\");
+        System.out.println("                                         ,'               `.");
+        System.out.println("                                      .d8b.               .d8b.");
+        System.out.println("                                      \"Y8888p..       ,.d8888P\"");
+        System.out.println("                                        \"Y88888888888888888P\"");
+        System.out.println("                                           \"\"YY8888888PP\"");
     }
     
 }

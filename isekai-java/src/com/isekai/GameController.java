@@ -107,7 +107,7 @@ public class GameController {
             case 3:
                 playerType = PlayerType.BERSERK;
                 System.out.println("¡Has elegido Berserk!");
-
+                consoleTextManager.printBerserk();
                 break;
             case 4:
                 playerType = PlayerType.KNIGHT;
@@ -122,6 +122,7 @@ public class GameController {
             default:
                 playerType = PlayerType.KNIGHT;
                 System.out.println("Al no elegir nada, te asignamos Caballero por defecto, pringao.");
+                consoleTextManager.printKnight();
                 break;
         }
 
@@ -266,7 +267,7 @@ public class GameController {
         consoleTextManager.printEnemy(enemy);
         System.out.println("+---------------------------------------+");
         consoleTextManager.playerInfo(player, playerName);
-        System.out.println("| " + enemy.toString() + " \t|");
+        // System.out.println("| " + enemy.toString() + " \t|");
         System.out.println("+---------------------------------------+");
     }
 
@@ -295,7 +296,7 @@ public class GameController {
     }
     
     private void randomAttacks(Entity player, Entity enemy){
-        System.out.println("RANDOM ATTACKS\n");
+        //System.out.println("RANDOM ATTACKS\n");
 
         if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1) {
             attack(player, enemy);

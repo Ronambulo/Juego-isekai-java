@@ -7,9 +7,7 @@ public abstract class Slime extends AbstractEnemy{
     public String colorString;
 
     public Slime() {
-        //TODO por ahora verde
-        this.color = SlimeColor.RED;
-
+        this.color = SlimeColor.getRandomColor();
         this.attackType = AttackType.MELEE;
     }
 
@@ -17,7 +15,6 @@ public abstract class Slime extends AbstractEnemy{
         return color;
     }
 
-    //TODO
     @Override
     public String getModification() {
         return this.color.getColor();

@@ -12,4 +12,8 @@ public enum SlimeColor {
     public String getColor() {
         return color;
     }
+
+    public static SlimeColor getRandomColor() {
+        return SlimeColor.values()[(int) (Math.random() * SlimeColor.values().length)];
+    }
 }
