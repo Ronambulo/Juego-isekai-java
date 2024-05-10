@@ -38,6 +38,8 @@ public class World1Factory implements WorldAbstractFactory{
         Entity enemy = null;
         Double random = Calculator.getRandomDoubleBetweenRange(0, 100);
         
+        //calculamos un numero aleatorio y dependiendo de este, creamos un enemigo segun las probabilidades
+
         if(random < 40){
             enemy = createSlime();
         }

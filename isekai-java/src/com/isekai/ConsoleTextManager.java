@@ -55,15 +55,14 @@ public class ConsoleTextManager {
     private void numberToText(){
         switch (this.numberToText.getNumber()) {
             case 1: //introduccion
-                //! DESCOMENTAR PARA USAR    (por cierto enrique tienes que explicarme el numberToText)
-                // typeWriter("Bienvenido a Isekai, el juego de rol por consola, donde tu eres el protagonista y debes enfrentarte a los monstruos de este mundo para poder volver al tuyo.", 50);
-                // waitSeconds(1);
-                // typeWriter("Ibas caminando por la calle cuando de repente te desmayaste y al despertar te encontrabas en un lugar desconocido...\n", 50);
-                // waitSeconds(1);
-                // typeWriter("Un anciano (•̅灬•̅ ) te explica que estas en un mundo paralelo y que para volver al tuyo debes derrotar a los monstruos que habitan en este mundo....", 50);
-                // waitSeconds(1);
-                // typeWriter("El anciano te da a elegir entre 5 clases, cada uno con sus propias armas, elige sabiamente.", 50);
-                // waitSeconds(2);
+                typeWriter("Bienvenido a Isekai, el juego de rol por consola, donde tu eres el protagonista y debes enfrentarte a los monstruos de este mundo para poder volver al tuyo.", 50);
+                waitSeconds(1);
+                typeWriter("Ibas caminando por la calle cuando de repente te desmayaste. Al despertar te encontrabas en un lugar desconocido...\n", 50);
+                waitSeconds(1);
+                typeWriter("Un anciano te explica que estas en un mundo paralelo y que para volver al tuyo debes derrotar a los monstruos que habitan en este mundo....", 50);
+                waitSeconds(1);
+                typeWriter("El anciano te da a elegir entre 5 clases, cada uno con sus propias armas, elige sabiamente.", 50);
+                waitSeconds(2);
                 break;
             case 2: //Ataque
                 System.out.println("--------" + this.entityAttack.getName() + " ataca a " + this.entityDefend.getName() + " con " + this.entityAttack.getPower() + " de daño" + "--------\n" );

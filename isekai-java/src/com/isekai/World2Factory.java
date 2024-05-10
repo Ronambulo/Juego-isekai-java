@@ -34,6 +34,9 @@ public class World2Factory implements WorldAbstractFactory{
         public Entity createRandomEnemy() {
             Entity enemy = null;
             Double random = Calculator.getRandomDoubleBetweenRange(0, 100);
+
+            //calculamos un numero aleatorio y dependiendo de este, creamos un enemigo segun las probabilidades
+
             
             if(random < 30){
                 enemy = createSlime();

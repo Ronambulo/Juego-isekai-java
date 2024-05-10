@@ -18,7 +18,9 @@ public abstract class Entity {
     }
 
     public Entity(Integer numberOfCures) {
+        // El estado inicial de la entidad es NormalState
         this.currentState = new NormalState(this);
+        // La estrategia por defecto es AttackActionStrategy (que simplemente ataque)
         this.attackStrategy = new AttackActionStrategy();
         this.numberOfCures = numberOfCures;
     }

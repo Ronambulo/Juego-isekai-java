@@ -7,7 +7,6 @@ public abstract class Slime extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 5;
     protected final Integer DEFAULT_LIVES = 10;
     public SlimeColor color;
-    public String colorString;
 
     public Slime() {
         this.color = SlimeColor.getRandomColor();

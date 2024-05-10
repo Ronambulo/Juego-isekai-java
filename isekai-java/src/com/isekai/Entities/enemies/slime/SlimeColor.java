@@ -13,6 +13,7 @@ public enum SlimeColor {
         return color;
     }
 
+    // Método para obtener un color aleatorio
     public static SlimeColor getRandomColor() {
         return SlimeColor.values()[(int) (Math.random() * SlimeColor.values().length)];
     }

@@ -3,6 +3,8 @@ package com.isekai.entities;
 import com.isekai.entities.decorator.*;
 
 public class PlayerFactory {
+
+    // Simple factory para la creación de personajes para el jugador
     public AbstractPlayerComponent createPlayer(PlayerType playerType) {
         switch (playerType) {
             case WIZARD:

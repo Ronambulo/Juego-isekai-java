@@ -6,16 +6,15 @@ import com.isekai.entities.enemies.AbstractEnemy;
 public abstract class Wolf extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
     protected final Integer DEFAULT_LIVES = 17;
-    public String alfa;
+    public WolfType alfa;
 
     public Wolf() {
-        //TODO por ahora
-        this.alfa = "ALFA";
+        this.alfa = WolfType.getRandomAlpha();
         this.attackType = AttackType.MELEE;
     }
 
     public String getAlpha() {
-        return this.alfa;
+        return this.alfa.getWolfType();
     }
 
     @Override

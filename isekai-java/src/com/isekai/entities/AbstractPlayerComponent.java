@@ -6,6 +6,7 @@ public abstract class AbstractPlayerComponent extends Entity{
     private Boolean isInvisible;
 
     public AbstractPlayerComponent() {
+        // Al ser un jugador, comenzamos con 3 números de cura, no como el enemigo que empieza con 1
         super(3);
         this.arcaneKnowledge = 0;
         this.isInvisible = false;
@@ -13,6 +14,10 @@ public abstract class AbstractPlayerComponent extends Entity{
 
     public String getName() {
         return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getPower() {
@@ -31,16 +36,16 @@ public abstract class AbstractPlayerComponent extends Entity{
         return this.lives;
     }
 
+    public void modifyPower(Integer power) {
+        this.power += power;
+    }
+
     public String getDescription(){
         return getName() + " AttackType: " + getAttackType() +  ", lives=" + getLives() + ", power=" + getPower() + "]";
     }
 
     public String toString() {
         return getDescription();
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Integer getArcaneKnowledge() {

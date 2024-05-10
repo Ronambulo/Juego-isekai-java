@@ -9,23 +9,23 @@ public class HealActionStrategy implements ActionStrategy{
     ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
 
 	@Override
-	public void performAction(Integer world, Entity entity) {
-        if(entity.getNumberOfCures() > 0){
-            if(world == 1)
+	public void performAction(Object object, Entity entity) {
+
+        // Comprobamos si tiene más de 10 Conocimiento Arcano
+        if(((AbstractPlayerComponent)entity).getArcaneKnowledge() >=  10){
+            //Si estamos en el mundo  1, la curación puede ser de 9 a 13
+            if(((int)object) == 1)
                 entity.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13));
             else
+                //Si estamos en el mundo 2, la curación puede ser de 9 a 13 multiplicado por el factor de complejidad del mundo
                 entity.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13) * World.LEVEL2.getComplexFactor());
 
-            entity.setNumberOfCures(entity.getNumberOfCures() - 1);
             consoleTextManager.writeText(entity, Text.HEAL);
+            // Restamos 10 de conocimiento arcano, ya consumidos
+            ((AbstractPlayerComponent)entity).setArcaneKnowledge(((AbstractPlayerComponent)entity).getArcaneKnowledge() - 10);
         }
         else{
-            System.out.println("No tienes pociones de curación");
+            System.out.println("Intentaste curarte, pero no tienes suficiente conocimiento arcano como para hacer una poción");
         }
-	}
-
-	@Override
-	public void performAction(Entity attacker, Entity attacked) {
-		
 	}
 }

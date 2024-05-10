@@ -9,11 +9,12 @@ public enum WolfType {
         this.wolfType = wolfType;
     }
 
-    public String getColor() {
+    public String getWolfType() {
         return wolfType;
     }
 
-    public static WolfType getRandomColor() {
+    // Lo mismo, pero random WolfType
+    public static WolfType getRandomAlpha() {
         return WolfType.values()[(int) (Math.random() * WolfType.values().length)];
     }
 }

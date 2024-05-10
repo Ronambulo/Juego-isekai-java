@@ -13,6 +13,7 @@ public enum BeeType {
         return this.genre;
     }
 
+    // Método para obtener un género aleatorio
     public static BeeType getRandomGenre() {
         return BeeType.values()[(int) (Math.random() * BeeType.values().length)];
     }

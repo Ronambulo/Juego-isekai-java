@@ -9,7 +9,6 @@ public abstract class Ogre extends AbstractEnemy{
     public String weapon;
 
     public Ogre() {
-        //TODO por ahora
         this.weapon = "Mazo";
         this.attackType = AttackType.MELEE;
     }
@@ -17,8 +16,6 @@ public abstract class Ogre extends AbstractEnemy{
     public String getWeapon() {
         return this.weapon;
     }
-
-    //TODO
     
     public String getModification() {
         return getWeapon();

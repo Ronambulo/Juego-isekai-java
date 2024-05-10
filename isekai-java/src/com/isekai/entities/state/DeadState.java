@@ -8,6 +8,7 @@ public class DeadState implements EntityState{
         this.entity = entity;
     }
 
+    // La entidad está muerta, no puede hacer nada
     @Override
     public void show(Entity entityContext) {
         System.out.print("Estado de " + entityContext.getName() + ": \tMUERTO");

@@ -1,7 +1,5 @@
 package com.isekai.entities.strategy;
-
 import com.isekai.entities.*;
-import com.isekai.entities.enemies.World;
 import com.isekai.*;
 
 public class ImproveStatsAction implements ActionStrategy{
@@ -9,23 +7,17 @@ public class ImproveStatsAction implements ActionStrategy{
     ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
 
 	@Override
-	public void performAction(Integer world, Entity entity) {
-        if(entity.getNumberOfCures() > 0){
-            if(world == 1)
-                entity.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13));
-            else
-                entity.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13) * World.LEVEL2.getComplexFactor());
+	public void performAction(Object object, Entity entity) {
 
-            entity.setNumberOfCures(entity.getNumberOfCures() - 1);
-            consoleTextManager.writeText(entity, Text.HEAL);
+        // Comprobamos si tiene más de 100 de Conocimiento Arcano
+        if(((AbstractPlayerComponent)entity).getArcaneKnowledge() >= 100){
+            // Mejoramos las estadísticas del jugador (el poderS)
+            ((AbstractPlayerComponent)entity).modifyPower((int)object);
+            // Restamos 100 de Conocimiento Arcano
+            ((AbstractPlayerComponent)entity).setArcaneKnowledge(((AbstractPlayerComponent)entity).getArcaneKnowledge() - 100);
         }
         else{
-            System.out.println("No tienes pociones de curación");
+            System.out.println("No tienes suficiente conocimiento arcano como para mejorar tus estadísticas");
         }
-	}
-
-	@Override
-	public void performAction(Entity attacker, Entity attacked) {
-		
 	}
 }

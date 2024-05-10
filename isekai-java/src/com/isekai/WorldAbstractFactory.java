@@ -12,6 +12,7 @@ import com.isekai.entities.enemies.dragon.*;
 public interface WorldAbstractFactory {
     Calculator calculator = Calculator.getInstance();
 
+    //Factory methods
     public Slime createSlime();
     public Bee createBee();        
     public Ogre createOgre();
@@ -19,5 +20,6 @@ public interface WorldAbstractFactory {
     public Wolf createWolf();
     public Dragon createDragon();
 
+    //Method to create a random enemy
     public Entity createRandomEnemy();
 }

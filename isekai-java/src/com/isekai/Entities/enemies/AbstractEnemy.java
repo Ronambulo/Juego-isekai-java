@@ -3,8 +3,8 @@ package com.isekai.entities.enemies;
 import com.isekai.entities.AttackType;
 import com.isekai.entities.Entity;
 
+// Clase abstracta que extenderán los enemigos del juego, ya que comparten atributos
 public abstract class AbstractEnemy extends Entity{
-    protected AttackType attackType;
 
     public String getName() {
         return super.getClass().getSuperclass().getSimpleName();

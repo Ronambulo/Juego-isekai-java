@@ -19,18 +19,22 @@ public class Calculator {
         return instance;
     }
 
+    // Retorna un valor aleatorio entre los números que pases por parámetros
     public static double getRandomDoubleBetweenRange(double min, double max){
         return(Math.random()* (max-min))+min;
     }
 
+    // Calcula la vida
     public Integer calculateLives(Entity attacker, Entity attacked){
         return (attacked.getLives() - attacker.getPower());
     }
 
+    // modifica la vida
     public void calculateHealh(Entity entity, Integer healValue){
         entity.modifyHealth(healValue);
     }
 
+    // Calcula cuánto Arcane vamos  aganar, dependiendo del enemigo
     public Integer calculateArcaneKnowledge(AbstractPlayerComponent player, Entity enemy){
         if(enemy instanceof Slime){
             return (player.getArcaneKnowledge() + 2);
