@@ -63,7 +63,6 @@ public class GameController {
             currentWorld = 1;
             gameLogic(world1Enemies);
             currentWorld = 2;
-            player.setLives(1000);
             gameLogic(world2Enemies);
             System.out.println();
 
