@@ -65,13 +65,13 @@ public class GameController {
             currentWorld = 2;
             gameLogic(world2Enemies);
             System.out.println();
-
-            consoleTextManager.clearScreen(50);
-            System.out.println("¿DESEAS COMBATIR AL BOSS FINAL? (S/N)");
-            if(scanner.nextLine().toLowerCase().equals("s")) {
-                gameLogic(new ArrayList<Entity>(){{add(dragon);}});
-            }   
-
+            if(playerIsAlive()){
+                consoleTextManager.clearScreen(50);
+                System.out.println("¿DESEAS COMBATIR AL BOSS FINAL? (S/N)");
+                if(scanner.nextLine().toLowerCase().equals("s")) {
+                    gameLogic(new ArrayList<Entity>(){{add(dragon);}});
+                }   
+            }
             spawnEnemies();
         }
 
@@ -228,7 +228,7 @@ public class GameController {
     private void rangeAttackFirst(Entity player, Entity enemy){
         System.out.println("¡Te toca atacar a ti primero!\n");
 
-        while(enemy.getLives() > 0 && enemy.getLives() > 0){
+        while(playerIsAlive() && enemyIsAlive(enemy)){
             attack(player, enemy);
             if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
             attack(player, enemy);
@@ -240,7 +240,7 @@ public class GameController {
     //Si el jugador es cuerpo a cuerpo y el enemigo rango, el enemigo ataca primero
     private void meleeAttackFirst(Entity player, Entity enemy){
         System.out.println("MELEE ATTACK FIRST\n");
-        while(player.getLives() > 0 && enemy.getLives() > 0){        
+        while(playerIsAlive() && enemyIsAlive(enemy)){        
             attack(enemy, player);
             if(!playerIsAlive() || !enemyIsAlive(enemy)) break;
             attack(enemy, player);
