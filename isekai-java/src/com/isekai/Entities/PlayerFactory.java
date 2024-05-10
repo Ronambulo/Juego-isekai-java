@@ -3,7 +3,7 @@ package com.isekai.entities;
 import com.isekai.entities.decorator.*;
 
 public class PlayerFactory {
-    public PlayerComponent createPlayer(PlayerType playerType) {
+    public AbstractPlayerComponent createPlayer(PlayerType playerType) {
         switch (playerType) {
             case WIZARD:
                 return new WandDecorator(new TunicDecorator(new RangePlayer()));

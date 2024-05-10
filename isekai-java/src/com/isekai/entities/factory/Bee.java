@@ -1,11 +1,11 @@
-package com.isekai.entities;
+package com.isekai.entities.factory;
 
-import com.isekai.Calculator;
+import com.isekai.entities.AttackType;
 
 public abstract class Bee extends AbstractEnemy{
-    protected final Integer DEFAULT_POWER = 8;
-    protected final Integer DEFAULT_LIVES = 10;
-    public BeeType genre;
+    protected static final Integer DEFAULT_POWER = 8;
+    protected static final Integer DEFAULT_LIVES = 10;
+    private BeeType genre;
 
     public Bee() {
         this.attackType = AttackType.RANGE;

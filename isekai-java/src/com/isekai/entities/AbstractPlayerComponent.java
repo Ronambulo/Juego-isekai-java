@@ -1,11 +1,11 @@
 package com.isekai.entities;
 
-public abstract class PlayerComponent extends Entity{
+public abstract class AbstractPlayerComponent extends Entity{
 
     private Integer arcaneKnowledge;
     private Boolean isInvisible;
 
-    public PlayerComponent() {
+    public AbstractPlayerComponent() {
         super(3);
         this.arcaneKnowledge = 0;
         this.isInvisible = false;

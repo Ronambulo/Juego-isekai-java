@@ -2,6 +2,9 @@ package com.isekai.entities.state;
 import com.isekai.Calculator;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.*;
+import com.isekai.entities.factory.Bee;
+import com.isekai.entities.factory.BeeType;
+import com.isekai.entities.factory.Slime;
 
 public class NormalState implements EntityState{
     private Entity entity;
@@ -21,7 +24,7 @@ public class NormalState implements EntityState{
     }
 
     public void attack(Entity attacker, Entity attacked){
-        if(attacker instanceof PlayerComponent){
+        if(attacker instanceof AbstractPlayerComponent){
             if(attacker instanceof WandDecorator){
                 if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                     attacked.setCurrentState(new BurningState(attacked));

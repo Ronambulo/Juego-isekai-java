@@ -1,6 +1,6 @@
 package com.isekai;
 
-public enum Texto {
+public enum Text {
     INTRODUCTION(1), 
     ATTACK(2), 
     HEAL(3), 
@@ -9,7 +9,7 @@ public enum Texto {
     WIN(6), 
     LOOSE(7);
 
-    Texto(Integer n) {
+    Text(Integer n) {
         this.n = n;
     }
 

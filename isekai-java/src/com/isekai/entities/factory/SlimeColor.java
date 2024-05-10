@@ -1,4 +1,4 @@
-package com.isekai.entities;
+package com.isekai.entities.factory;
 
 public enum SlimeColor {
     RED("Rojo") ,BLUE("Azul"),RAINBOW("Multicolor");

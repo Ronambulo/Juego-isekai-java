@@ -3,7 +3,7 @@ COSAS POR HACER
 
 - Revisar con el Enunciado
 
-- Enemigos sueltan Arcano
+- Enemigos sueltan Arcano (además hay que mirar el tema del slime rojo, verde, multicolor)
 - Calculator
 - Añadir 1 estrategia más
 - Añadir colorines tontos

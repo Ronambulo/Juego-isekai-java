@@ -1,6 +1,7 @@
 package com.isekai;
 
 import com.isekai.entities.*;
+import com.isekai.entities.factory.*;
 
 public class World2Factory implements WorldAbstractFactory{
     

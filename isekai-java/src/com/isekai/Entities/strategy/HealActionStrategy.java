@@ -1,6 +1,7 @@
 package com.isekai.entities.strategy;
 
 import com.isekai.entities.*;
+import com.isekai.entities.factory.World;
 import com.isekai.*;
 
 public class HealActionStrategy implements ActionStrategy{
@@ -16,7 +17,7 @@ public class HealActionStrategy implements ActionStrategy{
                 entity.modifyHealth((int)Calculator.getRandomDoubleBetweenRange(9, 13) * World.LEVEL2.getComplexFactor());
 
             entity.setNumberOfCures(entity.getNumberOfCures() - 1);
-            consoleTextManager.writeText(entity, Texto.HEAL);
+            consoleTextManager.writeText(entity, Text.HEAL);
         }
         else{
             System.out.println("No tienes pociones de curación");

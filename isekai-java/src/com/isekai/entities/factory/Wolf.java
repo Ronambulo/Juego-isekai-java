@@ -1,4 +1,6 @@
-package com.isekai.entities;
+package com.isekai.entities.factory;
+
+import com.isekai.entities.AttackType;
 
 public abstract class Wolf extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;

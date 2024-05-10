@@ -7,7 +7,7 @@ public class WandDecorator extends AbstractPlayerDecorator{
     public static final Integer DEFAULT_LIVES = 0;
     public static final Integer DEFAULT_POWER = 8;
 
-    public WandDecorator(PlayerComponent playerComponent) {
+    public WandDecorator(AbstractPlayerComponent playerComponent) {
         super(playerComponent, WandDecorator.DEFAULT_POWER, WandDecorator.DEFAULT_LIVES, WandDecorator.DEFAULT_NAME);
     }
 }

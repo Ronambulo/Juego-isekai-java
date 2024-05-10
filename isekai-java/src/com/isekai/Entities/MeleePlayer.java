@@ -1,6 +1,6 @@
 package com.isekai.entities;
 
-public class MeleePlayer extends PlayerComponent{
+public class MeleePlayer extends AbstractPlayerComponent{
 
     public MeleePlayer() {
         super();

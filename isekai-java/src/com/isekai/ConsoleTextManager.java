@@ -2,6 +2,8 @@ package com.isekai;
 import java.util.Scanner;
 import java.util.concurrent.*;
 import com.isekai.entities.*;
+import com.isekai.entities.factory.Slime;
+import com.isekai.entities.factory.SlimeColor;
 
 public class ConsoleTextManager {
 
@@ -15,13 +17,11 @@ public class ConsoleTextManager {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35m";
 
-    private Texto numberToText;
+    private Text numberToText;
     private Entity entityAttack;
     private Entity entityDefend;
     private static ConsoleTextManager instance;
     private Scanner scanner = new Scanner(System.in);
-
-    
 
     private ConsoleTextManager(){
         super();
@@ -34,18 +34,18 @@ public class ConsoleTextManager {
         return instance;
     }
 
-    public void writeText( Texto dialogo){
+    public void writeText( Text dialogo){
         this.numberToText = dialogo;
         numberToText();
     }
 
-    public void writeText(Entity entityAttack, Texto dialogo){
+    public void writeText(Entity entityAttack, Text dialogo){
         this.numberToText = dialogo;
         this.entityAttack = entityAttack;
         numberToText();
     }
 
-    public void writeText(Entity entityAttack, Entity entityDefend, Texto dialogo){
+    public void writeText(Entity entityAttack, Entity entityDefend, Text dialogo){
         this.numberToText = dialogo;
         this.entityAttack = entityAttack;
         this.entityDefend = entityDefend;
@@ -55,7 +55,7 @@ public class ConsoleTextManager {
     private void numberToText(){
         switch (this.numberToText.getNumber()) {
             case 1: //introduccion
-                //! DESCOMENTAR PARA USAR   
+                //! DESCOMENTAR PARA USAR    (por cierto enrique tienes que explicarme el numberToText)
                 // typeWriter("Bienvenido a Isekai, el juego de rol por consola, donde tu eres el protagonista y debes enfrentarte a los monstruos de este mundo para poder volver al tuyo.", 50);
                 // waitSeconds(1);
                 // typeWriter("Ibas caminando por la calle cuando de repente te desmayaste y al despertar te encontrabas en un lugar desconocido...\n", 50);
@@ -214,7 +214,7 @@ public class ConsoleTextManager {
         printEnemy(enemy);
         System.out.println("+---------------------------------------+");
         playerInfo(player);
-        System.out.println("| Conocimiento Arcano: " + ((PlayerComponent)player).getArcaneKnowledge() + "\t\t|");
+        System.out.println("| Conocimiento Arcano: " + ((AbstractPlayerComponent)player).getArcaneKnowledge() + "\t\t|");
         System.out.print("| ");
         player.getCurrentState().show(player);
         System.out.println("\t\t|");

@@ -1,6 +1,6 @@
 package com.isekai.entities;
 
-public class RangePlayer extends PlayerComponent{
+public class RangePlayer extends AbstractPlayerComponent{
 
     public RangePlayer() {
         super();

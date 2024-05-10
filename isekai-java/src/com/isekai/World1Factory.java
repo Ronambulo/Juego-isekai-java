@@ -1,27 +1,27 @@
 package com.isekai;
-
 import com.isekai.entities.*;
+import com.isekai.entities.factory.*;
 
 public class World1Factory implements WorldAbstractFactory{
 
     public Slime createSlime(){
-        return new SlimeWorld1(); //TODO: Implementar color aleatorio y contexto del Strategy
+        return new SlimeWorld1(); 
     }
 
     public Bee createBee(){
-        return new BeeWorld1(); //TODO: Implementar color aleatorio y contexto del Strategy
+        return new BeeWorld1(); 
     }
 
     public Goat createGoat(){
-        return new GoatWorld1(); //TODO: Implementar color aleatorio y contexto del Strategy
+        return new GoatWorld1(); 
     }
 
     public Ogre createOgre(){
-        return new OgreWorld1(); //TODO: Implementar color aleatorio y contexto del Strategy
+        return new OgreWorld1(); 
     }
 
     public Wolf createWolf(){
-        return new WolfWorld1(); //TODO: Implementar color aleatorio y contexto del Strategy
+        return new WolfWorld1(); 
     }
 
     @Override

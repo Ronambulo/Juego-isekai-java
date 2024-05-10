@@ -1,4 +1,7 @@
-package com.isekai.entities;
+package com.isekai.entities.factory;
+
+import com.isekai.entities.AttackType;
+import com.isekai.entities.Entity;
 
 public abstract class AbstractEnemy extends Entity{
     protected AttackType attackType;

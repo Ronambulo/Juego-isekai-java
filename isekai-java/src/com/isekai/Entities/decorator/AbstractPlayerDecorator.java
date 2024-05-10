@@ -2,11 +2,11 @@ package com.isekai.entities.decorator;
 
 import com.isekai.entities.*;
 
-public abstract class AbstractPlayerDecorator extends PlayerComponent{
+public abstract class AbstractPlayerDecorator extends AbstractPlayerComponent{
 
-    protected PlayerComponent playerComponent;
+    protected AbstractPlayerComponent playerComponent;
 
-    public AbstractPlayerDecorator(PlayerComponent playerComponent, Integer power, Integer lives, String name){
+    public AbstractPlayerDecorator(AbstractPlayerComponent playerComponent, Integer power, Integer lives, String name){
         this.playerComponent = playerComponent;
         this.power = power;
         this.lives = lives;

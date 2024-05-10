@@ -11,9 +11,9 @@ public class InvisibilityActionStrategy implements ActionStrategy{
 
     @Override
     public void performAction(Entity attacker, Entity attacked){
-        if(((PlayerComponent)attacker).getArcaneKnowledge() > 10){
+        if(((AbstractPlayerComponent)attacker).getArcaneKnowledge() > 10){
             System.out.println("¡" + attacker.getName() + " se vuelve invisible y evita ser detectado!");
-            ((PlayerComponent)attacker).setArcaneKnowledge(((PlayerComponent)attacker).getArcaneKnowledge() - 10);
+            ((AbstractPlayerComponent)attacker).setArcaneKnowledge(((AbstractPlayerComponent)attacker).getArcaneKnowledge() - 10);
         }
         else{
             System.out.println("¡" + attacker.getName() + " intenta volverse invisible, pero no tiene conocimiento arcano suficiente!");

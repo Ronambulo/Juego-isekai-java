@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.AbstractPlayerDecorator;
+import com.isekai.entities.factory.AbstractEnemy;
 import com.isekai.entities.strategy.*;
 
 public class GameController {
@@ -13,7 +14,7 @@ public class GameController {
     private WorldAbstractFactory world2Factory = new World2Factory();
     private PlayerFactory playerFactory = new PlayerFactory();
     private ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
-    private PlayerComponent player;
+    private AbstractPlayerComponent player;
     private String playerName;
 
     private ArrayList<Entity> world1Enemies;
@@ -40,7 +41,7 @@ public class GameController {
         playerName = scanner.nextLine();   
         if(playerName.isEmpty()) playerName = GameController.DEFAULT_PLAYER_NAME;
 
-        consoleTextManager.writeText(Texto.INTRODUCTION);
+        consoleTextManager.writeText(Text.INTRODUCTION);
         System.out.println("\n\n");
         //seleccionar jugador
         player = playerFactory.createPlayer(consoleTextManager.playerSelection());
@@ -65,10 +66,10 @@ public class GameController {
         }    
         if(gameOver) {
             consoleTextManager.clearScreen(50);
-            consoleTextManager.writeText(Texto.LOOSE);
+            consoleTextManager.writeText(Text.LOOSE);
         } else {
             consoleTextManager.clearScreen(50);
-            consoleTextManager.writeText(Texto.WIN);
+            consoleTextManager.writeText(Text.WIN);
         }
         
     }
@@ -190,7 +191,7 @@ public class GameController {
                 else{
                     attacked.modifyHealth(-attacker.getPower());
                     attacked.getCurrentState().attack(attacker, attacked); 
-                    consoleTextManager.writeText(attacker, attacked, Texto.ATTACK);
+                    consoleTextManager.writeText(attacker, attacked, Text.ATTACK);
                 }
             }
         }

@@ -1,4 +1,4 @@
-package com.isekai.entities;
+package com.isekai.entities.factory;
 
 public enum BeeType {
     QUEEN("Reina"), DRONE("Zángano");
