@@ -1,5 +1,6 @@
 package com.isekai.entities.state;
 import com.isekai.Calculator;
+import com.isekai.ConsoleTextManager;
 import com.isekai.entities.*;
 
 public class BurningState implements EntityState{
@@ -11,13 +12,13 @@ public class BurningState implements EntityState{
 
     @Override
     public void show(Entity entityContext) {
-        System.out.print("Estado de " + entityContext.getName() + ": \tQuemado");
+        System.out.print("Estado de " + entityContext.getName() + ": \t" + ConsoleTextManager.ANSI_RED + "Quemado" + ConsoleTextManager.ANSI_RESET);
     }
 
     @Override
     public void attack(Entity attacker, Entity attacked) {
         if(attacked.getLives() > 0){
-            System.out.println("El quemado ha hecho 5 de daño\n");
+            System.out.println("El quemado ha hecho 5 de daño a " + attacked.getName() + "\n");
             //al estar quemado perderá 5 de vida en cada turno
             attacked.modifyHealth(-5);
             

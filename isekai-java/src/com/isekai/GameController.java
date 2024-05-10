@@ -2,8 +2,8 @@ package com.isekai;
 import java.util.ArrayList;
 import java.util.Scanner;
 import com.isekai.entities.*;
-import com.isekai.entities.decorator.AbstractPlayerDecorator;
-import com.isekai.entities.factory.AbstractEnemy;
+import com.isekai.entities.decorator.*;
+import com.isekai.entities.enemies.*;
 import com.isekai.entities.strategy.*;
 
 public class GameController {
@@ -14,12 +14,15 @@ public class GameController {
     private WorldAbstractFactory world2Factory = new World2Factory();
     private PlayerFactory playerFactory = new PlayerFactory();
     private ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
+    private Calculator calculator = Calculator.getInstance();
     private AbstractPlayerComponent player;
     private String playerName;
 
     private ArrayList<Entity> world1Enemies;
     private ArrayList<Entity> world2Enemies;
-
+    //!NO SE
+    private Entity dragon = world1Factory.createDragon();
+    
     private Scanner scanner = new Scanner(System.in);
     private Boolean gameOver = false;
     private Integer currentWorld = 1;
@@ -52,12 +55,16 @@ public class GameController {
         spawnEnemies();
         System.out.println();
 
-        //Lógica del juego
-        gameLogic(world1Enemies);
-        currentWorld = 2;
-        // player.setLives(1000);
-        gameLogic(world2Enemies);
- 
+
+        while(enemyIsAlive(dragon) && playerIsAlive()){
+            //Lógica del juego
+            gameLogic(world1Enemies);
+            currentWorld = 2;
+            // player.setLives(1000);
+            gameLogic(world2Enemies);
+            spawnEnemies();
+        }
+
 
         if(!playerIsAlive()) {
             System.out.println("Estado del jugador: ");
@@ -123,6 +130,7 @@ public class GameController {
                     }
                 }
                 System.out.println(ConsoleTextManager.ANSI_RED + "¡¡¡¡" + enemy.getName() + " HA MUERTO!!!!\n" + ConsoleTextManager.ANSI_RESET);
+                player.setArcaneKnowledge(calculator.calculateArcaneKnowledge(player, enemy));
             }           
         
             //si al terminar el bucle, no hay enemigos vivos, se sale del bucle
@@ -189,9 +197,9 @@ public class GameController {
                     attacked.getContextStrategy().performAction(attacked, attacker);
                 }
                 else{
-                    attacked.modifyHealth(-attacker.getPower());
-                    attacked.getCurrentState().attack(attacker, attacked); 
-                    consoleTextManager.writeText(attacker, attacked, Text.ATTACK);
+                    // attacked.modifyHealth(-attacker.getPower());
+                    attacked.getContextStrategy().performAction(attacker, attacked); 
+                    //consoleTextManager.writeText(attacker, attacked, Text.ATTACK);
                 }
             }
         }

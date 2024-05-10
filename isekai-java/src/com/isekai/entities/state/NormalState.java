@@ -2,9 +2,10 @@ package com.isekai.entities.state;
 import com.isekai.Calculator;
 import com.isekai.entities.*;
 import com.isekai.entities.decorator.*;
-import com.isekai.entities.factory.Bee;
-import com.isekai.entities.factory.BeeType;
-import com.isekai.entities.factory.Slime;
+import com.isekai.entities.enemies.bee.Bee;
+import com.isekai.entities.enemies.bee.BeeType;
+import com.isekai.entities.enemies.slime.Slime;
+import com.isekai.entities.enemies.slime.SlimeColor;
 
 public class NormalState implements EntityState{
     private Entity entity;
@@ -42,9 +43,26 @@ public class NormalState implements EntityState{
                 attacked.setCurrentState(new PoissonedState(attacked));
             }
         }
-        if(attacker instanceof Slime){
+
+        //quemará sólo si es un slime rojo
+        if(attacker instanceof Slime && ((Slime)attacker).getColor() == SlimeColor.RED){
             if(Calculator.getRandomDoubleBetweenRange(0, 100) < 10){
                 attacked.setCurrentState(new BurningState(attacked));
+            }
+        }
+
+        //si es un slime multicolor, tendrá un 50/50 de envenenar o quemar
+        //y luego tendrá un 20% de probabilidad de envenenar y un 20% de quemar
+        if(attacker instanceof Slime && ((Slime)attacker).getColor() == SlimeColor.RAINBOW){
+            if(Calculator.getRandomDoubleBetweenRange(0, 2) <= 1){
+                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 20){
+                    attacked.setCurrentState(new PoissonedState(attacked));
+                }
+            }
+            else{
+                if(Calculator.getRandomDoubleBetweenRange(0, 100) < 20){
+                    attacked.setCurrentState(new BurningState(attacked));
+                }
             }
         }
     }

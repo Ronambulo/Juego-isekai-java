@@ -1,4 +1,6 @@
-package com.isekai.entities.factory;
+package com.isekai.entities.enemies.ogre;
+
+import com.isekai.entities.enemies.World;
 
 public class OgreWorld2 extends Ogre{
     public OgreWorld2() {

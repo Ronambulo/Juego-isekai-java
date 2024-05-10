@@ -1,4 +1,4 @@
-package com.isekai.entities.factory;
+package com.isekai.entities.enemies;
 
 import com.isekai.entities.AttackType;
 import com.isekai.entities.Entity;

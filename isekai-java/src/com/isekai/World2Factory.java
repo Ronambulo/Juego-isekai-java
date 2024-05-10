@@ -1,12 +1,17 @@
 package com.isekai;
 
 import com.isekai.entities.*;
-import com.isekai.entities.factory.*;
+import com.isekai.entities.enemies.bee.*;
+import com.isekai.entities.enemies.goat.*;
+import com.isekai.entities.enemies.ogre.*;
+import com.isekai.entities.enemies.slime.*;
+import com.isekai.entities.enemies.wolf.*;
+import com.isekai.entities.enemies.dragon.*;
 
 public class World2Factory implements WorldAbstractFactory{
     
         public Slime createSlime(){
-            return new SlimeWorld2(); //TODO: Implementar color aleatorio y contexto del Strategy
+            return new SlimeWorld2();
         }
         public Bee createBee(){
             return new BeeWorld2();
@@ -21,11 +26,14 @@ public class World2Factory implements WorldAbstractFactory{
             return new WolfWorld2();
         }
 
+        public Dragon createDragon(){
+            return new DragonWorld2();
+        }
+
         @Override
         public Entity createRandomEnemy() {
             Entity enemy = null;
-            Calculator calculator = Calculator.getInstance();
-            Double random = calculator.getRandomDoubleBetweenRange(0, 100);
+            Double random = Calculator.getRandomDoubleBetweenRange(0, 100);
             
             if(random < 30){
                 enemy = createSlime();

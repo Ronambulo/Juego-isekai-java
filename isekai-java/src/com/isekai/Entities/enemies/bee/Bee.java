@@ -1,6 +1,7 @@
-package com.isekai.entities.factory;
+package com.isekai.entities.enemies.bee;
 
 import com.isekai.entities.AttackType;
+import com.isekai.entities.enemies.AbstractEnemy;
 
 public abstract class Bee extends AbstractEnemy{
     protected static final Integer DEFAULT_POWER = 8;

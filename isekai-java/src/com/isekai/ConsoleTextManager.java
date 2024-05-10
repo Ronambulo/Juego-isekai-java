@@ -2,8 +2,8 @@ package com.isekai;
 import java.util.Scanner;
 import java.util.concurrent.*;
 import com.isekai.entities.*;
-import com.isekai.entities.factory.Slime;
-import com.isekai.entities.factory.SlimeColor;
+import com.isekai.entities.enemies.slime.Slime;
+import com.isekai.entities.enemies.slime.SlimeColor;
 
 public class ConsoleTextManager {
 
@@ -80,12 +80,12 @@ public class ConsoleTextManager {
                 System.out.println(this.entityAttack.getName() + " ha muerto");
                 break;
             case 6: //Victoria
-                System.out.println("██╗  ██╗ █████╗ ███████╗     ██████╗  █████╗ ███╗   ██╗ █████╗ ██████╗  ██████╗ ");
-                System.out.println("██║  ██║██╔══██╗██╔════╝    ██╔════╝ ██╔══██╗████╗  ██║██╔══██╗██╔══██╗██╔═══██╗");
-                System.out.println("███████║███████║███████╗    ██║  ███╗███████║██╔██╗ ██║███████║██║  ██║██║   ██║");
-                System.out.println("██╔══██║██╔══██║╚════██║    ██║   ██║██╔══██║██║╚██╗██║██╔══██║██║  ██║██║   ██║");
-                System.out.println("██║  ██║██║  ██║███████║    ╚██████╔╝██║  ██║██║ ╚████║██║  ██║██████╔╝╚██████╔╝");
-                System.out.println("╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝ ╚═════╝ ");                
+                System.out.println(ConsoleTextManager.ANSI_GREEN + "██╗  ██╗ █████╗ ███████╗     ██████╗  █████╗ ███╗   ██╗ █████╗ ██████╗  ██████╗ ");
+                System.out.println(                              "██║  ██║██╔══██╗██╔════╝    ██╔════╝ ██╔══██╗████╗  ██║██╔══██╗██╔══██╗██╔═══██╗");
+                System.out.println(                              "███████║███████║███████╗    ██║  ███╗███████║██╔██╗ ██║███████║██║  ██║██║   ██║");
+                System.out.println(                              "██╔══██║██╔══██║╚════██║    ██║   ██║██╔══██║██║╚██╗██║██╔══██║██║  ██║██║   ██║");
+                System.out.println(                              "██║  ██║██║  ██║███████║    ╚██████╔╝██║  ██║██║ ╚████║██║  ██║██████╔╝╚██████╔╝");
+                System.out.println(                                "╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝     ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═════╝ ╚═════╝ " + ConsoleTextManager.ANSI_RESET);                
                 break;
             case 7: //Derrota
                 System.out.println(ConsoleTextManager.ANSI_RED + " ██╗  ██╗ █████╗ ███████╗    ███╗   ███╗██╗   ██╗███████╗██████╗ ████████╗ ██████╗ ");
@@ -121,7 +121,7 @@ public class ConsoleTextManager {
     }
 
     public void playerInfo(Entity player){
-        System.out.println("| " + player.getName() + "\t\tPoder: " + player.getPower() + " Vida: " + player.getLives() + " \t|");
+        System.out.println("| " + player.getName() + ConsoleTextManager.ANSI_YELLOW + "\t\tPoder: " + player.getPower() + ConsoleTextManager.ANSI_RED + " Vida: " + player.getLives() + ConsoleTextManager.ANSI_RESET + " \t|");
     }
 
     public void printEnemy(Entity enemy){
@@ -214,7 +214,7 @@ public class ConsoleTextManager {
         printEnemy(enemy);
         System.out.println("+---------------------------------------+");
         playerInfo(player);
-        System.out.println("| Conocimiento Arcano: " + ((AbstractPlayerComponent)player).getArcaneKnowledge() + "\t\t|");
+        System.out.println("| " + ConsoleTextManager.ANSI_BLUE +  "Conocimiento Arcano: " + ((AbstractPlayerComponent)player).getArcaneKnowledge() + ConsoleTextManager.ANSI_RESET +  "\t\t|");
         System.out.print("| ");
         player.getCurrentState().show(player);
         System.out.println("\t\t|");

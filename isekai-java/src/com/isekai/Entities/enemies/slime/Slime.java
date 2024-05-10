@@ -1,6 +1,7 @@
-package com.isekai.entities.factory;
+package com.isekai.entities.enemies.slime;
 
 import com.isekai.entities.AttackType;
+import com.isekai.entities.enemies.AbstractEnemy;
 
 public abstract class Slime extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 5;

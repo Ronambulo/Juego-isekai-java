@@ -4,7 +4,7 @@ import com.isekai.entities.*;
 import com.isekai.entities.enemies.World;
 import com.isekai.*;
 
-public class HealActionStrategy implements ActionStrategy{
+public class ImproveStatsAction implements ActionStrategy{
 
     ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
 

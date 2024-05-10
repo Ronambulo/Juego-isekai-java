@@ -2,9 +2,7 @@ package com.isekai.entities.strategy;
 import com.isekai.entities.*;
 
 public class InvisibilityActionStrategy implements ActionStrategy{
-    // private Calculator calculator = Calculator.getInstance();
-    // private ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
-
+    
     public void performAction(Integer world, Entity entity){
         System.err.println("No se puede realizar esta acción");
     }

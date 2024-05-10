@@ -9,13 +9,13 @@ public enum Text {
     WIN(6), 
     LOOSE(7);
 
-    Text(Integer n) {
-        this.n = n;
+    private Integer numberForText;
+
+    Text(Integer numberForText) {
+        this.numberForText = numberForText;
     }
 
-    private Integer n;
-
     public Integer getNumber() {
-        return this.n;
+        return this.numberForText;
     }
 }

@@ -1,12 +1,9 @@
 package com.isekai.entities.strategy;
 
-import com.isekai.Calculator;
-import com.isekai.ConsoleTextManager;
-import com.isekai.Text;
+import com.isekai.*;
 import com.isekai.entities.*;
 
 public class AttackActionStrategy implements ActionStrategy{
-    private Calculator calculator = Calculator.getInstance();
     private ConsoleTextManager consoleTextManager = ConsoleTextManager.getInstance();
 
     public void performAction(Integer world, Entity entity){
@@ -15,7 +12,7 @@ public class AttackActionStrategy implements ActionStrategy{
 
     @Override
     public void performAction(Entity attacker, Entity attacked){
-        attacked.setLives(calculator.calculateLives(attacker, attacked));
+        attacked.modifyHealth(-attacker.getPower());
         consoleTextManager.writeText(attacker, attacked, Text.ATTACK);
     }
 }

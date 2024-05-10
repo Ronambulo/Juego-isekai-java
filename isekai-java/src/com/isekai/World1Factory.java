@@ -1,6 +1,11 @@
 package com.isekai;
 import com.isekai.entities.*;
-import com.isekai.entities.factory.*;
+import com.isekai.entities.enemies.bee.*;
+import com.isekai.entities.enemies.goat.*;
+import com.isekai.entities.enemies.ogre.*;
+import com.isekai.entities.enemies.slime.*;
+import com.isekai.entities.enemies.wolf.*;
+import com.isekai.entities.enemies.dragon.*;
 
 public class World1Factory implements WorldAbstractFactory{
 
@@ -22,6 +27,10 @@ public class World1Factory implements WorldAbstractFactory{
 
     public Wolf createWolf(){
         return new WolfWorld1(); 
+    }
+
+    public Dragon createDragon(){
+        return new DragonWorld1(); 
     }
 
     @Override

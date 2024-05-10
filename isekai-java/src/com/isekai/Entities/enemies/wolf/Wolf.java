@@ -1,6 +1,7 @@
-package com.isekai.entities.factory;
+package com.isekai.entities.enemies.wolf;
 
 import com.isekai.entities.AttackType;
+import com.isekai.entities.enemies.AbstractEnemy;
 
 public abstract class Wolf extends AbstractEnemy{
     protected final Integer DEFAULT_POWER = 10;
@@ -13,13 +14,12 @@ public abstract class Wolf extends AbstractEnemy{
         this.attackType = AttackType.MELEE;
     }
 
-    public String getGenre() {
+    public String getAlpha() {
         return this.alfa;
     }
 
-    //TODO
     @Override
     public String getModification() {
-        return this.alfa;
+        return getAlpha();
     }
 }
